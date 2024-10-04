@@ -1,11 +1,9 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Vector;
 
-public class AthletesTable extends Frame implements SubmitAthleteProfile {
-    DefaultTableModel tableModel;
+public class AthletesTable implements AddAthlete {
+    private final DefaultTableModel tableModel;
 
     public AthletesTable(ArrayList<Athlete> athletes) {
         JFrame.setDefaultLookAndFeelDecorated(false);
@@ -39,15 +37,14 @@ public class AthletesTable extends Frame implements SubmitAthleteProfile {
     }
 
     public void addAthlete() {
-        AthleteGui addAthleteGUI = new AthleteGui();
-        addAthleteGUI.setSubmittedListener(this);
+//        new AddAthleteWindow(this);
     }
 
     @Override
-    public void onSubmit(Athlete athlete) {
+    public void onAdd(Athlete athlete) {
         String name = athlete.getAthleteName();
         String weight = String.valueOf(athlete.getWeight());
         String category = athlete.getWeightCategory();
-        tableModel.addRow(new Object[]{name, weight, category});
+        this.tableModel.addRow(new Object[]{name, weight, category});
     }
 }

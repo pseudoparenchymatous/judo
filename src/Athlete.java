@@ -3,16 +3,25 @@ public class Athlete {
     private String trainingPlan;
     private double weight; // in kgs
     private String weightCategory;
-    private int noOfCompetitions; // this month
+    private boolean willCompete; // this month
     private int noOfPrivateHours;
 
-    public Athlete(String name, String trainingPlan, double weight, int competitions, int coachingHours) {
+    public Athlete() {
+        athleteName = "";
+        trainingPlan = "";
+        weight = 0.00;
+        weightCategory = "";
+        willCompete = false;
+        noOfPrivateHours = 0;
+    }
+
+    public Athlete(String name, String trainingPlan, double weight, String weightCategory, boolean willCompete, int coachingHours) {
         this.athleteName = name;
         this.trainingPlan = trainingPlan;
         this.weight = weight;
-        this.noOfCompetitions = competitions;
+        this.willCompete = willCompete;
         this.noOfPrivateHours = coachingHours;
-        setWeightCategory();
+        this.weightCategory = weightCategory;
     }
 
     public String getAthleteName() {
@@ -27,35 +36,17 @@ public class Athlete {
         return weightCategory;
     }
 
-    public void setAthleteName(String athleteName) {
-        this.athleteName = athleteName;
-    }
+    public double getMonthlyTrainingFee() {
+        double fee = 0.00;
+        double[] fees = {25.00, 30.00, 35};
+        String[] trainingPlans = {"Beginner", "Intermediate", "Elite"};
 
-    public void setWeightCategory() {
-        if (weight > 100) {
-            weightCategory = "Heavyweight";
-        } else if (weight > 90) {
-            weightCategory = "Light-Heavyweight";
-        } else if (weight > 81) {
-            weightCategory = "Middleweight";
-        } else if (weight > 73) {
-            weightCategory = "Light-Middleweight";
-        } else if (weight > 66) {
-            weightCategory = "Lightweight";
-        } else {
-            weightCategory = "Flyweight";
+        for (int i = 0; i < trainingPlans.length; i++) {
+            if (trainingPlans[i].equals(trainingPlan)) {
+                fee = fees[i] * 4;
+            }
         }
-    }
 
-    public void setNoOfCompetitions(int noOfCompetitions) {
-        this.noOfCompetitions = noOfCompetitions;
-    }
-
-    public void setNoOfPrivateHours(int noOfPrivateHours) {
-        this.noOfPrivateHours = noOfPrivateHours;
-    }
-
-    public void setTrainingPlan(String trainingPlan) {
-        this.trainingPlan = trainingPlan;
+        return fee;
     }
 }

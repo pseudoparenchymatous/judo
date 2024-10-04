@@ -1,11 +1,13 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class AthleteGui {
-    private SubmitAthleteProfile submitted;
+public class AddAthleteWindow {
+    private final AthleteSubmission submission;
     private final JTextField nameField = new JTextField();
     private final String[] trainingPlans = {"Beginner", "Intermediate", "Elite"};
+    private final String[] weightCategories = {"Heavyweight", "Light-Heavyweight", "Middleweight", "Light-Middleweight", "Lightweight", "Flyweight"};
     private final JComboBox trainingPlan = new JComboBox(trainingPlans);
+    private final JComboBox weightCategory = new JComboBox(weightCategories);
     private final SpinnerNumberModel competitionsModel = new SpinnerNumberModel(0, 0,30, 1);
     private final SpinnerNumberModel privateHoursModel = new SpinnerNumberModel(0, 0,5, 1);
     private final SpinnerNumberModel weightModel = new SpinnerNumberModel(1.00, 1.00, 150.00, 0.1);
@@ -13,7 +15,9 @@ public class AthleteGui {
     private final JSpinner competitions = new JSpinner(competitionsModel);
     private final JSpinner privateHours = new JSpinner(privateHoursModel);
 
-    public AthleteGui() {
+    public AddAthleteWindow(AthleteSubmission submission) {
+        this.submission = submission;
+
         JFrame frame = new JFrame("Enter athlete details");
         JPanel framePanel = new JPanel();
         framePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -53,6 +57,17 @@ public class AthleteGui {
         weightPanel.add(weightLabel);
         weightPanel.add(weight);
 
+        weight.addChangeListener(_ -> checkWeight());
+
+        JPanel categoryPanel = new JPanel();
+        categoryPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        categoryPanel.setLayout(new BoxLayout(categoryPanel, BoxLayout.X_AXIS));
+        formPanel.add(categoryPanel);
+        JLabel categoryLabel = new JLabel("Weight category");
+        categoryLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        categoryPanel.add(categoryLabel);
+        categoryPanel.add(weightCategory);
+
         JPanel competitionsPanel = new JPanel();
         competitionsPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         competitionsPanel.setLayout(new BoxLayout(competitionsPanel, BoxLayout.X_AXIS));
@@ -76,16 +91,21 @@ public class AthleteGui {
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
         JButton submitButton = new JButton("Submit");
         JButton clearButton = new JButton("Clear");
-        submitButton.addActionListener(_ -> submitForm());
-        clearButton.addActionListener(_ -> clearForm());
         buttonsPanel.add(clearButton);
         buttonsPanel.add(submitButton);
         framePanel.add(buttonsPanel);
 
+        submitButton.addActionListener(_ -> submitForm());
+        clearButton.addActionListener(_ -> clearForm());
+
         frame.pack();
         frame.add(framePanel);
         frame.setVisible(true);
-        frame.setSize(300, 300);
+        frame.setSize(300, 400);
+    }
+
+    private void checkWeight() {
+        double weight = (double)this.weight.getValue();
     }
 
     private void checkTrainingPlan() {
@@ -110,22 +130,17 @@ public class AthleteGui {
         String name = nameField.getText();
         String trainingPlan = this.trainingPlan.getSelectedItem().toString();
         double weight = (double)this.weight.getValue();
-        int competitions = (int)this.competitions.getValue();
+        String weightCategory = this.weightCategory.getSelectedItem().toString();
+        boolean willCompete = (boolean) this.competitions.getValue();
         int coachingHours = (int)privateHours.getValue();
 
         System.out.println("Name: " + name);
         System.out.println("Training plan: " + trainingPlan);
         System.out.println("Weight: " + weight);
-        System.out.println("Competitions: " + competitions);
+        System.out.println("Competitions: " + willCompete);
         System.out.println("Hours of private coaching: " + coachingHours);
 
-        Athlete athlete = new Athlete(name, trainingPlan, weight, competitions, coachingHours);
-        if (submitted != null) {
-            submitted.onSubmit(athlete);
-        }
-    }
-
-    public void setSubmittedListener(SubmitAthleteProfile submitted) {
-        this.submitted = submitted;
+        Athlete athlete = new Athlete(name, trainingPlan, weight, weightCategory, willCompete, coachingHours);
+        submission.setAthlete(athlete);
     }
 }
