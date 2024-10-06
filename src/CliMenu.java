@@ -66,7 +66,7 @@ public class CliMenu implements Menu {
             choice = cliInput.nextInt();
         } while (choice < 1 || choice > 6);
 
-        return categories[choice];
+        return categories[choice - 1];
     }
 
     private boolean checkTrainingPlan(String trainingPlan) {
