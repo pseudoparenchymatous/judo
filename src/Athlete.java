@@ -5,6 +5,14 @@ public class Athlete {
     private int competitions;
     private int coachingHours;
 
+    public Athlete() {
+        name = "";
+        trainingPlan = "";
+        weight = 0.0;
+        competitions = 0;
+        coachingHours = 0;
+    }
+
     public Athlete(String name, String trainingPlan, double weight, int competitions, int coachingHours) {
         this.name = name;
         this.trainingPlan = trainingPlan;
