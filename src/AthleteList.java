@@ -12,7 +12,7 @@ public class AthleteList {
     }
 
     public Athlete getAthleteByName(String name) {
-        Athlete athlete = null;
+        Athlete athlete = new Athlete();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getName().equals(name)) {
                 athlete = list.get(i);
