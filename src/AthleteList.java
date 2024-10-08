@@ -1,14 +1,23 @@
 import java.util.ArrayList;
 
 public class AthleteList {
+    private static AthleteList instance;
     private ArrayList<Athlete> list;
 
-    public AthleteList() {
+    private AthleteList() {
         list = new ArrayList<>();
     }
 
-    public void addAthlete(Athlete athlete) {
-        list.add(athlete);
+    public static AthleteList getList() {
+        if (instance == null) {
+            instance = new AthleteList();
+        }
+
+        return instance;
+    }
+
+    public static void addAthlete(Athlete athlete) {
+        getList().list.add(athlete);
     }
 
     public Athlete getAthleteByName(String name) {

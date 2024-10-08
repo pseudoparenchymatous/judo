@@ -5,7 +5,6 @@ public class Menu {
     private final String[] options = {"Register athlete", "Print costs", "Exit"};
 
     public Menu() {
-        AthleteList list = new AthleteList();
         AthleteInput athleteInput = new AthleteInput();
         AthleteOutput athleteOutput = new AthleteOutput();
 
@@ -16,10 +15,10 @@ public class Menu {
             userInput = getUserInput(options.length);
             switch (userInput) {
                 case 1:
-                    list.addAthlete(athleteInput.getAthlete());
+                    AthleteList.getList().addAthlete(athleteInput.getAthlete());
                     break;
                 case 2:
-                    athleteOutput.printCosts(list, athleteInput.getName());
+                    athleteOutput.printCosts(AthleteList.getList(), athleteInput.getName());
                     break;
                 default:
                     System.out.println("Exiting");
