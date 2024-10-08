@@ -4,7 +4,7 @@ public class AthleteOutput {
     public void printCosts(AthleteList list, String name) {
         Athlete athlete = list.getAthleteByName(name);
         if (athlete.getName().isEmpty()) {
-            System.out.println("\u001B[31mAthlete not found in list\u001b[0m");
+            System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
         }
 
