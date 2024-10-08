@@ -1,6 +1,6 @@
 public class Athlete {
     private String name;
-    private String trainingPlan;
+    private TrainingPlan trainingPlan;
     private double weight;
     private String weightCategory;
     private int competitions;
@@ -8,14 +8,14 @@ public class Athlete {
 
     public Athlete() {
         name = "";
-        trainingPlan = "";
+        trainingPlan = null;
         weight = 0.0;
         weightCategory = "";
         competitions = 0;
         coachingHours = 0;
     }
 
-    public Athlete(String name, String trainingPlan, double weight, String weightCategory, int competitions, int coachingHours) {
+    public Athlete(String name, TrainingPlan trainingPlan, double weight, String weightCategory, int competitions, int coachingHours) {
         this.name = name;
         this.trainingPlan = trainingPlan;
         this.weight = weight;
@@ -28,7 +28,7 @@ public class Athlete {
         return name;
     }
 
-    public String getTrainingPlan() {
+    public TrainingPlan getTrainingPlan() {
         return trainingPlan;
     }
 
@@ -48,7 +48,7 @@ public class Athlete {
         this.name = name;
     }
 
-    public void setTrainingPlan(String trainingPlan) {
+    public void setTrainingPlan(TrainingPlan trainingPlan) {
         this.trainingPlan = trainingPlan;
     }
 
