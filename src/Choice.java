@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
 public interface Choice {
+    Scanner input = new Scanner(System.in);
+
     default int getUserChoice(String[] choices) {
         printChoices(choices);
         int choicesLen = choices.length;
 
-        Scanner input = new Scanner(System.in);
         System.out.print("\u001B[32m");
         int userInput = 0;
         do {
