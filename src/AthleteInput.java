@@ -7,25 +7,25 @@ public class AthleteInput {
         input = new Scanner(System.in);
     }
 
-    public Athlete getAthlete() {
+    public Athlete inputAthlete() {
         Athlete athlete = new Athlete();
 
-        athlete.setName(getName());
-        athlete.setTrainingPlan(getTrainingPlan());
-        athlete.setWeight(getWeight());
-        athlete.setWeightCategory(getWeightCategory());
-        athlete.setCompetitions(getCompetitions(athlete.getTrainingPlan()));
-        athlete.setCoachingHours(getCoachingHours());
+        athlete.setName(inputName());
+        athlete.setTrainingPlan(inputTrainingPlan());
+        athlete.setWeight(inputWeight());
+        athlete.setWeightCategory(inputWeightCategory());
+        athlete.setCompetitions(inputCompetitions(athlete.getTrainingPlan()));
+        athlete.setCoachingHours(inputCoachingHours());
 
         return athlete;
     }
 
-    public String getName() {
+    public String inputName() {
         System.out.print("Enter name: ");
         return input.next();
     }
 
-    private TrainingPlan getTrainingPlan() {
+    private TrainingPlan inputTrainingPlan() {
         String[] trainingPlans = {
                 BeginnerPlan.getString(),
                 IntermediatePlan.getString(),
@@ -59,7 +59,7 @@ public class AthleteInput {
         };
     }
 
-    private double getWeight() {
+    private double inputWeight() {
         double weight = 0.0;
         do {
             System.out.print("Enter weight in kg: ");
@@ -73,7 +73,7 @@ public class AthleteInput {
         return weight;
     }
 
-    private String getWeightCategory() {
+    private String inputWeightCategory() {
         String[] categories = {
                 "Flyweight",
                 "Lightweight",
@@ -105,7 +105,7 @@ public class AthleteInput {
         return categories[userInput-1];
     }
 
-   private int getCompetitions(TrainingPlan trainingPlan) {
+   private int inputCompetitions(TrainingPlan trainingPlan) {
         int userInput = -1;
         if (!(trainingPlan instanceof BeginnerPlan)) {
             do {
@@ -124,7 +124,7 @@ public class AthleteInput {
         return userInput;
    }
 
-   private int getCoachingHours() {
+   private int inputCoachingHours() {
         int userInput = -1;
         do {
             System.out.print("Enter hours of private coaching (0-5): ");
