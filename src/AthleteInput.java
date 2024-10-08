@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AthleteInput {
+public class AthleteInput implements Choice {
     private final Scanner input;
 
     public AthleteInput() {
@@ -35,26 +35,8 @@ public class AthleteInput {
             ElitePlan.getString()
         };
 
-        int userInput = 0;
-
-        do {
-            System.out.println("Available plans are:");
-            for (int i = 0; i < trainingPlans.length; i++) {
-                System.out.printf("%d.) %s\n", i + 1, trainingPlans[i]);
-            }
-
-            System.out.print("Pick training plan: \u001B[32m");
-            if (input.hasNextInt()) {
-                userInput = input.nextInt();
-            } else {
-                input.next();
-            }
-            System.out.print("\u001B[0m");
-
-            if (userInput < 1 || userInput > trainingPlans.length) {
-                System.out.println("\u001B[31mInvalid input.\u001B[0m");
-            }
-        } while (userInput < 1 || userInput > trainingPlans.length);
+        System.out.println("Available plans are:");
+        int userInput = getUserChoice(trainingPlans);
 
         return switch (userInput) {
             case 3 -> new ElitePlan();
@@ -88,25 +70,8 @@ public class AthleteInput {
             "Heavyweight"
         };
 
-        int userInput = 0;
-        do {
-            System.out.println("Available weight categories");
-            for (int i = 0; i < categories.length; i++) {
-                System.out.printf("%d.) %s\n", i + 1, categories[i]);
-            }
-
-            System.out.print("Pick weight category: \u001B[32m");
-            if (input.hasNextInt()) {
-                userInput = input.nextInt();
-            } else {
-                input.next();
-            }
-            System.out.print("\u001B[0m");
-
-            if (userInput < 1 || userInput > categories.length) {
-                printInvalid();
-            }
-        } while (userInput < 1 || userInput > categories.length);
+        System.out.println("Available weight categories");
+        int userInput = getUserChoice(categories);
 
         return categories[userInput-1];
     }
