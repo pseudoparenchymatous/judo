@@ -2,6 +2,7 @@ public class Athlete {
     private String name;
     private String trainingPlan;
     private double weight;
+    private String weightCategory;
     private int competitions;
     private int coachingHours;
 
@@ -9,14 +10,16 @@ public class Athlete {
         name = "";
         trainingPlan = "";
         weight = 0.0;
+        weightCategory = "";
         competitions = 0;
         coachingHours = 0;
     }
 
-    public Athlete(String name, String trainingPlan, double weight, int competitions, int coachingHours) {
+    public Athlete(String name, String trainingPlan, double weight, String weightCategory, int competitions, int coachingHours) {
         this.name = name;
         this.trainingPlan = trainingPlan;
         this.weight = weight;
+        this.weightCategory = weightCategory;
         this.competitions = competitions;
         this.coachingHours = coachingHours;
     }
@@ -59,5 +62,13 @@ public class Athlete {
 
     public void setCoachingHours(int coachingHours) {
         this.coachingHours = coachingHours;
+    }
+
+    public String getWeightCategory() {
+        return weightCategory;
+    }
+
+    public void setWeightCategory(String weightCategory) {
+        this.weightCategory = weightCategory;
     }
 }
