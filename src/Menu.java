@@ -19,7 +19,7 @@ public class Menu implements Choice {
             }
 
             if (userInput < 1 || userInput > choicesLen) {
-                System.out.println("Invalid input. Input 1-" + choicesLen);
+                System.out.println("\u001b[31mInvalid input.\u001b[0m Input 1-" + choicesLen);
             }
         } while (userInput < 1 || userInput > choicesLen);
         return userInput;
