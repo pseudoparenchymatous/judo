@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
-    private final String[] options = {"Register athlete", "Print costs", "Exit"};
+    private final String[] choices = {"Register athlete", "Print costs", "Exit"};
 
     public Menu() {
         AthleteInput athleteInput = new AthleteInput();
@@ -11,8 +11,8 @@ public class Menu {
         int userInput;
         do {
             printWelcomeMessages();
-            printOptions();
-            userInput = getUserInput(options.length);
+            printChoices();
+            userInput = getUserInput(choices.length);
             switch (userInput) {
                 case 1:
                     AthleteList.getList().addAthlete(athleteInput.getAthlete());
@@ -32,9 +32,9 @@ public class Menu {
         }
     }
 
-    private void printOptions() {
-        for (int i = 0; i < options.length; i++) {
-            System.out.printf("%d.) %s\n", i + 1, options[i]);
+    private void printChoices() {
+        for (int i = 0; i < choices.length; i++) {
+            System.out.printf("%d.) %s\n", i + 1, choices[i]);
         }
     }
 
