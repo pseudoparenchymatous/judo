@@ -13,9 +13,9 @@ public class AthleteList {
 
     public Athlete getAthleteByName(String name) {
         Athlete athlete = new Athlete();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getName().equals(name)) {
-                athlete = list.get(i);
+        for (Athlete value : list) {
+            if (value.getName().equals(name)) {
+                athlete = value;
             }
         }
 
