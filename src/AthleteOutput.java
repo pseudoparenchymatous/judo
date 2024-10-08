@@ -8,9 +8,9 @@ public class AthleteOutput {
             return;
         }
 
-        printDash(40);
+        printDash(28);
         System.out.println("\tMonthly cost");
-        printDash(40);
+        printDash(28);
 
         System.out.println("Athlete name: " + athlete.getName());
 
