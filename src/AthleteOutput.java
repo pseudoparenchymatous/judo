@@ -12,7 +12,7 @@ public class AthleteOutput {
         System.out.println("\tMonthly cost");
         printDash(28);
 
-        System.out.println("Athlete name: " + athlete.getName());
+        System.out.printf("Athlete name: \u001B[34m\u001B[4m%s\u001B[0m\n", athlete.getName());
 
         System.out.println("Itemized costs:");
         double totalMonthlyCost = getTrainingFee(athlete);
@@ -43,7 +43,7 @@ public class AthleteOutput {
         double hourlyFee = 9.0;
         double monthlyFee = hourlyFee * athlete.getCoachingHours() * 4;
 
-        System.out.printf("\tPrivate Coaching: $%.2f (4weeks * %d hours * %.2f)\n",
+        System.out.printf("\tPrivate Coaching: $%.2f (4weeks * %d hours * $%.2f)\n",
                 monthlyFee,
                 athlete.getCoachingHours(),
                 hourlyFee
