@@ -21,8 +21,11 @@ public class AthleteInput {
     }
 
     public String inputName() {
-        System.out.print("Enter name: ");
-        return input.next();
+        System.out.print("Enter name: \u001B[32m");
+        String name = input.next();
+        System.out.print("\u001B[0m");
+
+        return name;
     }
 
     private TrainingPlan inputTrainingPlan() {
@@ -40,12 +43,13 @@ public class AthleteInput {
                 System.out.printf("%d.) %s\n", i + 1, trainingPlans[i]);
             }
 
-            System.out.print("Pick training plan: ");
+            System.out.print("Pick training plan: \u001B[32m");
             if (input.hasNextInt()) {
                 userInput = input.nextInt();
             } else {
                 input.next();
             }
+            System.out.print("\u001B[0m");
 
             if (userInput < 1 || userInput > trainingPlans.length) {
                 System.out.println("\u001B[31mInvalid input.\u001B[0m");
@@ -62,12 +66,13 @@ public class AthleteInput {
     private double inputWeight() {
         double weight = 0.0;
         do {
-            System.out.print("Enter weight in kg: ");
+            System.out.print("Enter weight in kg: \u001B[32m");
             if (input.hasNextDouble()) {
                 weight = input.nextDouble();
             } else {
                 input.next();
             }
+            System.out.print("\u001B[0m");
         } while (weight < 1.0);
 
         return weight;
@@ -90,12 +95,13 @@ public class AthleteInput {
                 System.out.printf("%d.) %s\n", i + 1, categories[i]);
             }
 
-            System.out.print("Pick weight category: ");
+            System.out.print("Pick weight category: \u001B[32m");
             if (input.hasNextInt()) {
                 userInput = input.nextInt();
             } else {
                 input.next();
             }
+            System.out.print("\u001B[0m");
 
             if (userInput < 1 || userInput > categories.length) {
                 printInvalid();
@@ -109,12 +115,13 @@ public class AthleteInput {
         int userInput = -1;
         if (!(trainingPlan instanceof BeginnerPlan)) {
             do {
-                System.out.print("Enter number of competition (0-1): ");
+                System.out.print("Enter number of competition (0-1): \u001B[32m");
                 if (input.hasNextInt()) {
                     userInput = input.nextInt();
                 } else {
                     input.next();
                 }
+                System.out.print("\u001B[0m");
 
                 if (userInput < 0 || userInput > 1) {
                     printInvalid();
@@ -127,13 +134,14 @@ public class AthleteInput {
     private int inputCoachingHours() {
         int userInput = -1;
         do {
-            System.out.print("Enter hours of private coaching (0-5): ");
+            System.out.print("Enter hours of private coaching (0-5): \u001B[32m");
 
             if (input.hasNextInt()) {
                 userInput = input.nextInt();
             } else {
                 input.next();
             }
+            System.out.print("\u001B[0m");
 
             if (userInput < 0 || userInput > 5) {
                 printInvalid();

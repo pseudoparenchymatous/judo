@@ -10,6 +10,7 @@ public class Menu implements Choice {
         int choicesLen = choices.length;
 
         Scanner input = new Scanner(System.in);
+        System.out.print("\u001B[32m");
         int userInput = 0;
         do {
             if (input.hasNextInt()) {
@@ -17,6 +18,7 @@ public class Menu implements Choice {
             } else {
                 input.next();
             }
+            System.out.print("\u001B[0m");
 
             if (userInput < 1 || userInput > choicesLen) {
                 System.out.println("\u001b[31mInvalid input.\u001b[0m Input 1-" + choicesLen);
