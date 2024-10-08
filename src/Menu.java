@@ -42,7 +42,7 @@ public class Menu implements Choice {
                     athleteOutput.printCosts(AthleteList.getList(), athleteInput.inputName());
                     break;
                 default:
-                    System.out.println("Exiting");
+                    System.out.println("Exiting...");
             }
         } while (userInput != 3);
     }

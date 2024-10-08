@@ -27,9 +27,9 @@ public class AthleteInput {
 
     private TrainingPlan inputTrainingPlan() {
         String[] trainingPlans = {
-                BeginnerPlan.getString(),
-                IntermediatePlan.getString(),
-                ElitePlan.getString()
+            BeginnerPlan.getString(),
+            IntermediatePlan.getString(),
+            ElitePlan.getString()
         };
 
         int userInput = 0;
@@ -75,12 +75,12 @@ public class AthleteInput {
 
     private String inputWeightCategory() {
         String[] categories = {
-                "Flyweight",
-                "Lightweight",
-                "Light-Middleweight",
-                "Middleweight",
-                "Light-Heavyweight",
-                "Heavyweight"
+            "Flyweight",
+            "Lightweight",
+            "Light-Middleweight",
+            "Middleweight",
+            "Light-Heavyweight",
+            "Heavyweight"
         };
 
         int userInput = 0;
@@ -105,7 +105,7 @@ public class AthleteInput {
         return categories[userInput-1];
     }
 
-   private int inputCompetitions(TrainingPlan trainingPlan) {
+    private int inputCompetitions(TrainingPlan trainingPlan) {
         int userInput = -1;
         if (!(trainingPlan instanceof BeginnerPlan)) {
             do {
@@ -122,9 +122,9 @@ public class AthleteInput {
             } while (userInput < 0 || userInput > 1);
         }
         return userInput;
-   }
+    }
 
-   private int inputCoachingHours() {
+    private int inputCoachingHours() {
         int userInput = -1;
         do {
             System.out.print("Enter hours of private coaching (0-5): ");
@@ -140,10 +140,10 @@ public class AthleteInput {
             }
         } while (userInput < 0 || userInput > 5);
         return userInput;
-   }
+    }
 
-   private void printInvalid() {
-       System.out.println("\u001B[31mInvalid input.\u001B[0m");
-   }
+    private void printInvalid() {
+        System.out.println("\u001B[31mInvalid input.\u001B[0m");
+    }
 
 }
