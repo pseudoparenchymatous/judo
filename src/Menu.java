@@ -1,8 +1,29 @@
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements Choice {
     private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
     private final String[] choices = {"Register athlete", "Print costs", "Exit"};
+
+    @Override
+    public int getUserChoice(String[] choices) {
+        printChoices(choices);
+        int choicesLen = choices.length;
+
+        Scanner input = new Scanner(System.in);
+        int userInput = 0;
+        do {
+            if (input.hasNextInt()) {
+                userInput = input.nextInt();
+            } else {
+                input.next();
+            }
+
+            if (userInput < 1 || userInput > choicesLen) {
+                System.out.println("Invalid input. Input 1-" + choicesLen);
+            }
+        } while (userInput < 1 || userInput > choicesLen);
+        return userInput;
+    }
 
     public Menu() {
         AthleteInput athleteInput = new AthleteInput();
@@ -11,8 +32,7 @@ public class Menu {
         int userInput;
         do {
             printWelcomeMessages();
-            printChoices();
-            userInput = getUserInput(choices.length);
+            userInput = getUserChoice(choices);
             switch (userInput) {
                 case 1:
                     AthleteList.getList().addAthlete(athleteInput.getAthlete());
@@ -32,27 +52,9 @@ public class Menu {
         }
     }
 
-    private void printChoices() {
+    private void printChoices(String[] choices) {
         for (int i = 0; i < choices.length; i++) {
             System.out.printf("%d.) %s\n", i + 1, choices[i]);
         }
     }
-
-    private int getUserInput(int noOfChoices) {
-        Scanner input = new Scanner(System.in);
-        int userInput = 0;
-        do {
-            if (input.hasNextInt()) {
-                userInput = input.nextInt();
-            } else {
-                input.next();
-            }
-
-            if (userInput < 1 || userInput > noOfChoices) {
-                System.out.println("Invalid input. Input 1-" + noOfChoices);
-            }
-        } while (userInput < 1 || userInput > noOfChoices);
-        return userInput;
-    }
-
 }
