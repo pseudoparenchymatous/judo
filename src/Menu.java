@@ -2,22 +2,29 @@ import java.util.Scanner;
 
 public class Menu {
     private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
-    private final String[] options = {"Register athlete", "Print costs"};
+    private final String[] options = {"Register athlete", "Print costs", "Exit"};
 
     public Menu() {
-        printWelcomeMessages();
-        printOptions();
-        int userInput = getUserInput(options.length);
-        switch (userInput) {
-            case 1:
-                System.out.println("Adding athlete");
-                break;
-            case 2:
-                System.out.println("Printing costs");
-                break;
-            default:
-                System.out.println("Unexpected input");
-        }
+        AthleteList list = new AthleteList();
+        AthleteInput athleteInput = new AthleteInput();
+        AthleteOutput athleteOutput = new AthleteOutput();
+
+        int userInput;
+        do {
+            printWelcomeMessages();
+            printOptions();
+            userInput = getUserInput(options.length);
+            switch (userInput) {
+                case 1:
+                    list.addAthlete(athleteInput.getAthlete());
+                    break;
+                case 2:
+                    athleteOutput.printCosts(list, athleteInput.getName());
+                    break;
+                default:
+                    System.out.println("Exiting");
+            }
+        } while (userInput != 3);
     }
 
     private void printWelcomeMessages() {
