@@ -1,6 +1,7 @@
 public class AthleteOutput {
+    private Athlete athlete;
     public void printCosts(AthleteList list, String name) {
-        Athlete athlete = list.getAthleteByName(name);
+        athlete = list.getAthleteByName(name);
         if (athlete instanceof InvalidAthlete) {
             System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
@@ -13,9 +14,9 @@ public class AthleteOutput {
         System.out.printf("Athlete name: \u001B[34m\u001B[4m%s\u001B[0m\n", athlete.getName());
 
         System.out.println("Itemized costs:");
-        double totalMonthlyCost = getTrainingFee(athlete);
-        totalMonthlyCost += getCoachingFee(athlete);
-        totalMonthlyCost += getCompetitionFee(athlete);
+        double totalMonthlyCost = getTrainingFee();
+        totalMonthlyCost += getCoachingFee();
+        totalMonthlyCost += getCompetitionFee();
         System.out.printf("Total Monthly Cost: $%.2f\n", totalMonthlyCost);
         printComparison(athlete.getWeight(), athlete.getWeightCategory());
         System.out.println();
@@ -28,7 +29,7 @@ public class AthleteOutput {
         System.out.println();
     }
 
-    private double getTrainingFee(Athlete athlete) {
+    private double getTrainingFee() {
         double weeklyFee = athlete.getTrainingPlan().getFee();
         double monthlyFee = weeklyFee * 4;
         System.out.printf("\tTraining Fee (%s): ", athlete.getTrainingPlan());
@@ -37,7 +38,7 @@ public class AthleteOutput {
         return monthlyFee;
     }
 
-    private double getCoachingFee(Athlete athlete) {
+    private double getCoachingFee() {
         double hourlyFee = 9.0;
         double monthlyFee = hourlyFee * athlete.getCoachingHours() * 4;
 
@@ -50,7 +51,7 @@ public class AthleteOutput {
         return monthlyFee;
     }
 
-    private double getCompetitionFee(Athlete athlete) {
+    private double getCompetitionFee() {
         System.out.print("\tCompetition Entry Fees: ");
         if (athlete.getTrainingPlan() instanceof BeginnerPlan) {
             System.out.println("\u001B[31m(Beginners cannot enter competitions)\u001B[0m");
