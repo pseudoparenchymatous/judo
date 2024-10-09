@@ -1,10 +1,15 @@
 package gui;
 
 import javax.swing.*;
+import java.util.HashMap;
 
 public class GuiWindow {
     private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
-    private final String[] choices = {"Register athlete", "Print costs", "Exit"};
+    private final HashMap<String, Choice> choicesButton = new HashMap<>() {{
+        put("Register athlete", new AddAthleteWindow());
+        put("Print costs", new PrintCostsWindow());
+        put("Exit", new ExitWindow());
+    }};
 
     private final JPanel buttonsPanel = new JPanel();
     private final JPanel welcomePanel = new JPanel();
@@ -23,7 +28,9 @@ public class GuiWindow {
         printWelcomeMessages();
         addButtons();
 
-        frame.setBounds(100, 30, 320, 120);
+        frame.pack();
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -37,8 +44,9 @@ public class GuiWindow {
     }
 
     private void addButtons() {
-        for (String choice: choices) {
+        for (String choice: choicesButton.keySet()) {
             JButton button = new JButton(choice);
+            button.addActionListener(_ -> choicesButton.get(choice).spawnWindow());
             buttonsPanel.add(button);
         }
     }

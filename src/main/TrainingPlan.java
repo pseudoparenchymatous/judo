@@ -1,5 +1,5 @@
 package main;
 
 public abstract class TrainingPlan {
-    abstract double getFee();
+    public abstract double getFee();
 }
