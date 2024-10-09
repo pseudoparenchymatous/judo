@@ -17,7 +17,7 @@ public class AthleteList {
     }
 
     public static void addAthlete(Athlete athlete) {
-        getList().list.add(athlete);
+        AthleteList.getList().list.add(athlete);
     }
 
     public Athlete getAthleteByName(String name) {
