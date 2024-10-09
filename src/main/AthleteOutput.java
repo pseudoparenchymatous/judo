@@ -1,3 +1,5 @@
+package main;
+
 public class AthleteOutput {
     private Athlete athlete;
     public void printCosts(AthleteList list, String name) {
@@ -36,7 +38,16 @@ public class AthleteOutput {
         double monthlyFee = weeklyFee * 4;
 
         System.out.printf("\tTraining Fee (%s): ", athlete.getTrainingPlan());
-        System.out.printf("\u001B[32m$%.2f\u001B[0m (4weeks * \u001B[32m$%.2f\u001B[0m)\n", monthlyFee, weeklyFee);
+
+        startGreenText();
+        System.out.printf("$%.2f", monthlyFee);
+        endGreenText();
+
+        System.out.print(" (4weeks * ");
+        startGreenText();
+        System.out.printf("$%.2f", weeklyFee);
+        endGreenText();
+        System.out.println(")");
 
         return monthlyFee;
     }
@@ -45,11 +56,18 @@ public class AthleteOutput {
         double hourlyFee = 9.0;
         double monthlyFee = hourlyFee * athlete.getCoachingHours() * 4;
 
-        System.out.printf("\tPrivate Coaching: \u001B[32m$%.2f\u001B[0m (4weeks * %d hours * \u001B[32m$%.2f)\u001B[0m\n",
-                monthlyFee,
-                athlete.getCoachingHours(),
-                hourlyFee
-        );
+        System.out.print("\tPrivate Coaching: ");
+
+        startGreenText();
+        System.out.printf("$%.2f", monthlyFee);
+        endGreenText();
+
+        System.out.printf(" (4 weeks * %d hours * ", athlete.getCoachingHours());
+        startGreenText();
+        System.out.printf("$%.2f", hourlyFee);
+        endGreenText();
+
+        System.out.println(")");
 
         return monthlyFee;
     }
@@ -126,5 +144,13 @@ public class AthleteOutput {
                 }
                 break;
         }
+    }
+
+    private void startGreenText() {
+        System.out.print("\u001B[32m");
+    }
+
+    private void endGreenText() {
+        System.out.print("\u001B[0m");
     }
 }

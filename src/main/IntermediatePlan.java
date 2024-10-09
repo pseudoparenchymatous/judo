@@ -1,3 +1,5 @@
+package main;
+
 public class IntermediatePlan extends TrainingPlan {
     public static String getString() {
         return "Intermediate";

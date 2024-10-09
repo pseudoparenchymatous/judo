@@ -1,3 +1,5 @@
+package main;
+
 public class ElitePlan extends TrainingPlan {
     public static String getString() {
         return "Elite";

@@ -1,3 +1,5 @@
+package main;
+
 public class Athlete {
     private String name;
     private TrainingPlan trainingPlan;
