@@ -17,7 +17,9 @@ public class AthleteOutput {
         double totalMonthlyCost = getTrainingFee();
         totalMonthlyCost += getCoachingFee();
         totalMonthlyCost += getCompetitionFee();
-        System.out.printf("Total Monthly Cost: $%.2f\n", totalMonthlyCost);
+
+        System.out.printf("Total Monthly Cost: \u001B[32m$%.2f\u001B[0m\n", totalMonthlyCost);
+
         printComparison(athlete.getWeight(), athlete.getWeightCategory());
         System.out.println();
     }
@@ -32,8 +34,9 @@ public class AthleteOutput {
     private double getTrainingFee() {
         double weeklyFee = athlete.getTrainingPlan().getFee();
         double monthlyFee = weeklyFee * 4;
+
         System.out.printf("\tTraining Fee (%s): ", athlete.getTrainingPlan());
-        System.out.printf("$%.2f (4weeks * $%.2f)\n", monthlyFee, weeklyFee);
+        System.out.printf("\u001B[32m$%.2f\u001B[0m (4weeks * \u001B[32m$%.2f\u001B[0m)\n", monthlyFee, weeklyFee);
 
         return monthlyFee;
     }
@@ -42,7 +45,7 @@ public class AthleteOutput {
         double hourlyFee = 9.0;
         double monthlyFee = hourlyFee * athlete.getCoachingHours() * 4;
 
-        System.out.printf("\tPrivate Coaching: $%.2f (4weeks * %d hours * $%.2f)\n",
+        System.out.printf("\tPrivate Coaching: \u001B[32m$%.2f\u001B[0m (4weeks * %d hours * \u001B[32m$%.2f)\u001B[0m\n",
                 monthlyFee,
                 athlete.getCoachingHours(),
                 hourlyFee
@@ -59,8 +62,8 @@ public class AthleteOutput {
         }
 
         double fee = 22.00;
-        System.out.printf("$%.2f (1 competition * $%.2f)\n", fee, fee);
-        return  fee;
+        System.out.printf("\u001B[32m$%.2f\u001B[0m (1 competition * \u001B[32m$%.2f)\u001B[0m\n", fee, fee);
+        return fee;
     }
 
     private void printComparison(double weight, String category) {
