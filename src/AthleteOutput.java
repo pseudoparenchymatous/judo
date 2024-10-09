@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class AthleteOutput {
     public void printCosts(AthleteList list, String name) {
         Athlete athlete = list.getAthleteByName(name);
