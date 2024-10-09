@@ -21,7 +21,7 @@ public class AthleteList {
     }
 
     public Athlete getAthleteByName(String name) {
-        Athlete athlete = new Athlete();
+        Athlete athlete = new InvalidAthlete();
         for (Athlete value : list) {
             if (value.getName().equals(name)) {
                 athlete = value;
