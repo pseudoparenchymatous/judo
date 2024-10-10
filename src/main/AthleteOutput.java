@@ -88,7 +88,7 @@ public class AthleteOutput {
         System.out.printf("Weight Comparison: %.2fkg (current) vs. ", weight);
         switch (category) {
             case "Flyweight":
-                System.out.printf("66kg (category limit) -- ");
+                System.out.print("66kg (category limit) -- ");
                 if (weight <= 66) {
                     System.out.println("within limit.");
                 } else {
@@ -96,7 +96,7 @@ public class AthleteOutput {
                 }
                 break;
             case "Lightweight":
-                System.out.printf("73kg (category limit) -- ");
+                System.out.print("73kg (category limit) -- ");
                 if (weight > 66 && weight <= 73) {
                     System.out.println("within limit.");
                 } else if (weight > 73) {
@@ -106,7 +106,7 @@ public class AthleteOutput {
                 }
                 break;
             case "Light-Middleweight":
-                System.out.printf("81 (category limit) -- ");
+                System.out.print("81 (category limit) -- ");
                 if (weight > 73 && weight <= 81) {
                     System.out.println("within limit.");
                 } else if (weight > 81) {
@@ -116,7 +116,7 @@ public class AthleteOutput {
                 }
                 break;
             case "Middleweight":
-                System.out.printf("90 (category limit) -- ");
+                System.out.print("90 (category limit) -- ");
                 if (weight > 81 && weight <= 90) {
                     System.out.println("within limit.");
                 } else if (weight > 90) {
@@ -126,7 +126,7 @@ public class AthleteOutput {
                 }
                 break;
             case "Light-Heavyweight":
-                System.out.printf("100 (category limit) -- ");
+                System.out.print("100 (category limit) -- ");
                 if (weight > 90 && weight <= 100) {
                     System.out.println("within limit.");
                 } else if (weight > 100) {
@@ -136,7 +136,7 @@ public class AthleteOutput {
                 }
                 break;
             case "Heavyweight":
-                System.out.printf("Unlimited (no limit) -- ");
+                System.out.print("Unlimited (no limit) -- ");
                 if (weight > 100) {
                     System.out.println("within limit.");
                 } else {
