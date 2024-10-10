@@ -17,6 +17,7 @@ public class AthleteOutput {
 
         System.out.println("Itemized costs:");
         double totalMonthlyCost = getTrainingFee();
+        printTrainingFee();
         totalMonthlyCost += getCoachingFee();
         totalMonthlyCost += getCompetitionFee();
 
@@ -36,6 +37,12 @@ public class AthleteOutput {
     private double getTrainingFee() {
         double weeklyFee = athlete.getTrainingPlan().getFee();
         double monthlyFee = weeklyFee * 4;
+        return monthlyFee;
+    }
+
+    private void printTrainingFee() {
+        double weeklyFee = athlete.getTrainingPlan().getFee();
+        double monthlyFee = weeklyFee * 4;
 
         System.out.printf("\tTraining Fee (%s): ", athlete.getTrainingPlan());
 
@@ -48,8 +55,6 @@ public class AthleteOutput {
         System.out.printf("$%.2f", weeklyFee);
         endGreenText();
         System.out.println(")");
-
-        return monthlyFee;
     }
 
     private double getCoachingFee() {
