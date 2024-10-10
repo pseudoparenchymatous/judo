@@ -74,7 +74,7 @@ public class AthleteOutput {
 
     private double getCompetitionFee() {
         System.out.print("\tCompetition Entry Fees: ");
-        if (athlete.getTrainingPlan() instanceof BeginnerPlan) {
+        if (athlete.getTrainingPlan() == TrainingPlan.BEGINNER) {
             System.out.println("\u001B[31m(Beginners cannot enter competitions)\u001B[0m");
             return 0.0;
         }

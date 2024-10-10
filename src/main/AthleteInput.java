@@ -31,19 +31,15 @@ public class AthleteInput implements Choice {
     }
 
     private TrainingPlan inputTrainingPlan() {
-        String[] trainingPlans = {
-            BeginnerPlan.getString(),
-            IntermediatePlan.getString(),
-            ElitePlan.getString()
-        };
+        String[] trainingPlans = TrainingPlan.getPlans();
 
         System.out.println("Available plans are:");
         int userInput = getUserChoice(trainingPlans);
 
         return switch (userInput) {
-            case 3 -> new ElitePlan();
-            case 2 -> new IntermediatePlan();
-            default -> new BeginnerPlan();
+            case 3 -> TrainingPlan.ELITE;
+            case 2 -> TrainingPlan.INTERMEDIATE;
+            default -> TrainingPlan.BEGINNER;
         };
     }
 
@@ -80,7 +76,7 @@ public class AthleteInput implements Choice {
 
     private int inputCompetitions(TrainingPlan trainingPlan) {
         int userInput = -1;
-        if (!(trainingPlan instanceof BeginnerPlan)) {
+        if (trainingPlan != TrainingPlan.BEGINNER) {
             do {
                 System.out.print("Enter number of competition (0-1): \u001B[32m");
                 if (input.hasNextInt()) {
