@@ -18,7 +18,7 @@ public class Menu implements Choice {
                     AthleteList.addAthlete(athleteInput.inputAthlete());
                     break;
                 case 2:
-                    athleteOutput.printCosts(AthleteList.getList(), athleteInput.inputName());
+                    athleteOutput.printCosts(athleteInput.inputName());
                     break;
                 default:
                     System.out.println("Exiting...");

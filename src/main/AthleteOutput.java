@@ -2,8 +2,9 @@ package main;
 
 public class AthleteOutput {
     private Athlete athlete;
-    public void printCosts(AthleteList list, String name) {
-        athlete = list.getAthleteByName(name);
+
+    public void printCosts(String name) {
+        athlete = AthleteList.getList().getAthleteByName(name);
         if (athlete instanceof InvalidAthlete) {
             System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
