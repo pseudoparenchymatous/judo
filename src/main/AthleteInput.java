@@ -23,9 +23,26 @@ public class AthleteInput implements Choice {
     }
 
     public String inputName() {
-        System.out.print("Enter name: \u001B[32m");
-        String name = input.next();
-        System.out.print("\u001B[0m");
+        boolean invalidName = false;
+        String name = "";
+
+        do {
+            invalidName = false;
+
+            System.out.print("Enter name: \u001B[32m");
+            name = input.next();
+            System.out.print("\u001B[0m");
+
+            for (char c: name.toCharArray()) {
+                if (!Character.isLetter(c)) {
+                    invalidName = true;
+                }
+            }
+
+            if (invalidName) {
+                System.out.println("\u001B[31mName must only contain letters\u001B[0m");
+            }
+        } while (invalidName);
 
         return name;
     }
