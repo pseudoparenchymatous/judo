@@ -5,7 +5,7 @@ public class AthleteOutput {
 
     public void printCosts(String name) {
         athlete = AthleteList.getList().getAthleteByName(name);
-        if (athlete instanceof InvalidAthlete) {
+        if (athlete == null) {
             System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
         }
