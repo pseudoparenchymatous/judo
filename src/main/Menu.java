@@ -15,7 +15,7 @@ public class Menu implements Choice {
             userInput = getUserChoice(choices);
             switch (userInput) {
                 case 1:
-                    AthleteList.addAthlete(athleteInput.inputAthlete());
+                    AthleteList.getList().addAthlete(athleteInput.inputAthlete());
                     break;
                 case 2:
                     athleteOutput.printCosts(athleteInput.inputName());

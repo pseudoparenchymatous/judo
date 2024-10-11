@@ -18,8 +18,8 @@ public class AthleteList {
         return instance;
     }
 
-    public static void addAthlete(Athlete athlete) {
-        AthleteList.getList().list.add(athlete);
+    public void addAthlete(Athlete athlete) {
+        list.add(athlete);
     }
 
     public Athlete getAthleteByName(String name) {
