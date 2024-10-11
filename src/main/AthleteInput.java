@@ -30,12 +30,14 @@ public class AthleteInput implements Choice {
             invalidName = false;
 
             System.out.print("Enter name: \u001B[32m");
-            name = input.next();
+            name = input.nextLine();
             System.out.print("\u001B[0m");
 
             for (char c: name.toCharArray()) {
-                if (!Character.isLetter(c)) {
-                    invalidName = true;
+                if (!Character.isSpaceChar(c)) {
+                    if (!Character.isLetter(c)) {
+                        invalidName = true;
+                    }
                 }
             }
 
