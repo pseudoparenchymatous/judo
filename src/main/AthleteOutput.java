@@ -19,6 +19,7 @@ public class AthleteOutput {
         System.out.println("\tMonthly cost");
         printDash(28);
 
+        // Print athlete name in blue + underlined
         System.out.printf("Athlete name: \u001B[34m\u001B[4m%s\u001B[0m\n", athlete.getName());
 
         System.out.println("Itemized costs:");
@@ -30,6 +31,9 @@ public class AthleteOutput {
         startGreenText();
         System.out.printf("$%.2f\n", calculator.getTotalMonthlyFee());
         endGreenText();
+
+        printComparison();
+        System.out.println();
     }
 
     private void printDash(int num) {
@@ -49,7 +53,7 @@ public class AthleteOutput {
         System.out.printf("$%.2f", monthlyFee);
         endGreenText();
 
-        System.out.print(" (4weeks * ");
+        System.out.print(" (4 weeks * ");
         startGreenText();
         System.out.printf("$%.2f", weeklyFee);
         endGreenText();
@@ -88,66 +92,15 @@ public class AthleteOutput {
         System.out.printf("\u001B[32m$%.2f\u001B[0m (%d competition * \u001B[32m$%.2f)\u001B[0m\n", fee, competitions, fee);
     }
 
-    private void printComparison(double weight, String category) {
-        System.out.printf("Weight Comparison: %.2fkg (current) vs. ", weight);
-        switch (category) {
-            case "Flyweight":
-                System.out.print("66kg (category limit) -- ");
-                if (weight <= 66) {
-                    System.out.println("within limit.");
-                } else {
-                    System.out.printf("exceeds limit by %.2f. Athlete needs to lose weight to meet requirements\n", weight-66);
-                }
-                break;
-            case "Lightweight":
-                System.out.print("73kg (category limit) -- ");
-                if (weight > 66 && weight <= 73) {
-                    System.out.println("within limit.");
-                } else if (weight > 73) {
-                    System.out.printf("exceeds limit by %.2f. Athlete needs to lose weight to meet requirements\n", weight-73);
-                } else {
-                    System.out.printf("below limit by %.2f. Athlete needs to gain weight to meet requirements\n", 67-weight);
-                }
-                break;
-            case "Light-Middleweight":
-                System.out.print("81 (category limit) -- ");
-                if (weight > 73 && weight <= 81) {
-                    System.out.println("within limit.");
-                } else if (weight > 81) {
-                    System.out.printf("exceeds limit by %.2f. Athlete needs to lose weight to meet requirements\n", weight-81);
-                } else {
-                    System.out.printf("below limit by %.2f. Athlete needs to gain weight to meet requirements\n", 74-weight);
-                }
-                break;
-            case "Middleweight":
-                System.out.print("90 (category limit) -- ");
-                if (weight > 81 && weight <= 90) {
-                    System.out.println("within limit.");
-                } else if (weight > 90) {
-                    System.out.printf("exceeds limit by %.2f. Athlete needs to lose weight to meet requirements\n", weight-90);
-                } else {
-                    System.out.printf("below limit by %.2f. Athlete needs to gain weight to meet requirements\n", 82-weight);
-                }
-                break;
-            case "Light-Heavyweight":
-                System.out.print("100 (category limit) -- ");
-                if (weight > 90 && weight <= 100) {
-                    System.out.println("within limit.");
-                } else if (weight > 100) {
-                    System.out.printf("exceeds limit by %.2f. Athlete needs to lose weight to meet requirements\n", weight-100);
-                } else {
-                    System.out.printf("below limit by %.2f. Athlete needs to gain weight to meet requirements\n", 91-weight);
-                }
-                break;
-            case "Heavyweight":
-                System.out.print("Unlimited (no limit) -- ");
-                if (weight > 100) {
-                    System.out.println("within limit.");
-                } else {
-                    System.out.printf("below limit by %.2f. Athlete needs to gain weight to meet requirements\n", 101-weight);
-                }
-                break;
-        }
+    private void printComparison() {
+        double weight = athlete.getWeight();
+        WeightCategory category = athlete.getWeightCategory();
+        WeightComparison comparison = new WeightComparison(category, weight);
+        String limit = comparison.getLimit();
+
+        System.out.print("Weight comparison: ");
+        System.out.printf("%.2f kg (current) vs %s (%s limit)\n", weight, limit, category);
+        System.out.printf("\t %s %s", comparison.getResult(), comparison.getSuggestion());
     }
 
     private void startGreenText() {
