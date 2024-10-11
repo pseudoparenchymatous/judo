@@ -8,15 +8,6 @@ public class Athlete {
     private int competitions;
     private int coachingHours;
 
-    public Athlete() {
-        name = "";
-        trainingPlan = null;
-        weight = 0.0;
-        weightCategory = "";
-        competitions = 0;
-        coachingHours = 0;
-    }
-
     public Athlete(String name, TrainingPlan trainingPlan, double weight, String weightCategory, int competitions, int coachingHours) {
         this.name = name;
         this.trainingPlan = trainingPlan;

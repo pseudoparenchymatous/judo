@@ -10,16 +10,14 @@ public class AthleteInput implements Choice {
     }
 
     public Athlete inputAthlete() {
-        Athlete athlete = new Athlete();
+        String name = inputName();
+        TrainingPlan trainingPlan = inputTrainingPlan();
+        double weight = inputWeight();
+        String weightCategory = inputWeightCategory();
+        int competitions = inputCompetitions(trainingPlan);
+        int coachingHours = inputCoachingHours();
 
-        athlete.setName(inputName());
-        athlete.setTrainingPlan(inputTrainingPlan());
-        athlete.setWeight(inputWeight());
-        athlete.setWeightCategory(inputWeightCategory());
-        athlete.setCompetitions(inputCompetitions(athlete.getTrainingPlan()));
-        athlete.setCoachingHours(inputCoachingHours());
-
-        return athlete;
+        return new Athlete(name, trainingPlan, weight, weightCategory, competitions, coachingHours);
     }
 
     public String inputName() {
