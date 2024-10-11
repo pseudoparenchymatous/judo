@@ -2,9 +2,11 @@ package main;
 
 public class AthleteOutput {
     private Athlete athlete;
+    private final AthleteFeeCalculator calculator;
 
     public AthleteOutput(Athlete athlete) {
         this.athlete = athlete;
+        this.calculator = new AthleteFeeCalculator(athlete);
     }
 
     public void printOutput() {
@@ -20,15 +22,14 @@ public class AthleteOutput {
         System.out.printf("Athlete name: \u001B[34m\u001B[4m%s\u001B[0m\n", athlete.getName());
 
         System.out.println("Itemized costs:");
-        double totalMonthlyCost = getTrainingFee();
         printTrainingFee();
-        totalMonthlyCost += getCoachingFee();
-        totalMonthlyCost += getCompetitionFee();
+        printCoachingFee();
+        printCompetitionFee();
 
-        System.out.printf("Total Monthly Cost: \u001B[32m$%.2f\u001B[0m\n", totalMonthlyCost);
-
-        printComparison(athlete.getWeight(), athlete.getWeightCategory());
-        System.out.println();
+        System.out.print("Total monthly cost: ");
+        startGreenText();
+        System.out.printf("$%.2f\n", calculator.getTotalMonthlyFee());
+        endGreenText();
     }
 
     private void printDash(int num) {
@@ -38,15 +39,9 @@ public class AthleteOutput {
         System.out.println();
     }
 
-    private double getTrainingFee() {
-        double weeklyFee = athlete.getTrainingPlan().getFee();
-        double monthlyFee = weeklyFee * 4;
-        return monthlyFee;
-    }
-
     private void printTrainingFee() {
-        double weeklyFee = athlete.getTrainingPlan().getFee();
-        double monthlyFee = weeklyFee * 4;
+        double weeklyFee = calculator.getWeeklyTrainingFee();
+        double monthlyFee = calculator.getMonthlyTrainingFee();
 
         System.out.printf("\tTraining Fee (%s): ", athlete.getTrainingPlan());
 
@@ -61,36 +56,36 @@ public class AthleteOutput {
         System.out.println(")");
     }
 
-    private double getCoachingFee() {
-        double hourlyFee = 9.0;
-        double monthlyFee = hourlyFee * athlete.getCoachingHours() * 4;
+    private void printCoachingFee() {
+        double hourlyFee = calculator.getHourlyCoachingFee();
+        double monthlyFee = calculator.getMonthlyCoachingFee();
 
-        System.out.print("\tPrivate Coaching: ");
-
+        System.out.print("\tPrivate Coaching: "); 
         startGreenText();
         System.out.printf("$%.2f", monthlyFee);
         endGreenText();
 
-        System.out.printf(" (4 weeks * %d hours * ", athlete.getCoachingHours());
+        System.out.printf(" (4 weeks * %d hour/s * ", athlete.getCoachingHours());
+
         startGreenText();
         System.out.printf("$%.2f", hourlyFee);
         endGreenText();
 
         System.out.println(")");
 
-        return monthlyFee;
     }
 
-    private double getCompetitionFee() {
+    private void printCompetitionFee() {
         System.out.print("\tCompetition Entry Fees: ");
+
         if (athlete.getTrainingPlan() == TrainingPlan.BEGINNER) {
             System.out.println("\u001B[31m(Beginners cannot enter competitions)\u001B[0m");
-            return 0.0;
         }
 
-        double fee = 22.00;
-        System.out.printf("\u001B[32m$%.2f\u001B[0m (1 competition * \u001B[32m$%.2f)\u001B[0m\n", fee, fee);
-        return fee;
+        double fee = calculator.getCompetitionFee();
+        int competitions = athlete.getCompetitions();
+
+        System.out.printf("\u001B[32m$%.2f\u001B[0m (%d competition * \u001B[32m$%.2f)\u001B[0m\n", fee, competitions, fee);
     }
 
     private void printComparison(double weight, String category) {
