@@ -8,7 +8,7 @@ public class AthleteOutput {
     }
 
     public void printOutput() {
-        if (athlete == null) {
+        if (athlete instanceof UnregisteredAthlete) {
             System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
         }

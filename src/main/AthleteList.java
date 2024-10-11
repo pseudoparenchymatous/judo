@@ -23,7 +23,8 @@ public class AthleteList {
     }
 
     public Athlete getAthleteByName(String name) {
-        Athlete athlete = null;
+        Athlete athlete = new UnregisteredAthlete();
+
         for (Athlete value : list) {
             if (value.getName().equals(name)) {
                 athlete = value;
