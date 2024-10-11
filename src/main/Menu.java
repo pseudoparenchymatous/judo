@@ -6,7 +6,6 @@ public class Menu implements Choice {
 
     public Menu() {
         AthleteInput athleteInput = new AthleteInput();
-        AthleteOutput athleteOutput = new AthleteOutput();
 
         int userInput;
         do {
@@ -18,7 +17,9 @@ public class Menu implements Choice {
                     AthleteList.getList().addAthlete(athleteInput.inputAthlete());
                     break;
                 case 2:
-                    athleteOutput.printCosts(athleteInput.inputName());
+                    Athlete athlete = AthleteList.getList().getAthleteByName(athleteInput.inputName());
+                    AthleteOutput athleteOutput = new AthleteOutput(athlete);
+                    athleteOutput.printOutput();
                     break;
                 default:
                     System.out.println("Exiting...");

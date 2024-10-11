@@ -3,8 +3,11 @@ package main;
 public class AthleteOutput {
     private Athlete athlete;
 
-    public void printCosts(String name) {
-        athlete = AthleteList.getList().getAthleteByName(name);
+    public AthleteOutput(Athlete athlete) {
+        this.athlete = athlete;
+    }
+
+    public void printOutput() {
         if (athlete == null) {
             System.out.println("\u001B[31mAthlete not registered.\u001b[0m");
             return;
