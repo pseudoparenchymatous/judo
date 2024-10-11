@@ -86,7 +86,7 @@ public class AthleteInput implements Choice {
     }
 
     private int inputCompetitions(TrainingPlan trainingPlan) {
-        int userInput = -1;
+        int userInput = 0;
         if (trainingPlan != TrainingPlan.BEGINNER) {
             do {
                 System.out.print("Enter number of competition (0-1): \u001B[32m");
@@ -98,10 +98,10 @@ public class AthleteInput implements Choice {
                 }
                 System.out.print("\u001B[0m");
 
-                if (userInput < 0 || userInput > 1) {
+                if (userInput <= -1 || userInput > 1) {
                     printInvalid();
                 }
-            } while (userInput < 0 || userInput > 1);
+            } while (userInput <= -1 || userInput > 1);
         }
         return userInput;
     }
