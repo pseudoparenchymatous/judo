@@ -14,6 +14,7 @@ public interface Choice {
         do {
             if (input.hasNextInt()) {
                 userInput = input.nextInt();
+                input.nextLine();
             } else {
                 input.next();
             }

@@ -68,6 +68,7 @@ public class AthleteInput implements Choice {
             System.out.print("Enter weight in kg: \u001B[32m");
             if (input.hasNextDouble()) {
                 weight = input.nextDouble();
+                input.nextLine();
             } else {
                 input.next();
             }
@@ -100,6 +101,7 @@ public class AthleteInput implements Choice {
                 System.out.print("Enter number of competition (0-1): \u001B[32m");
                 if (input.hasNextInt()) {
                     userInput = input.nextInt();
+                    input.nextLine();
                 } else {
                     input.next();
                 }
@@ -120,6 +122,7 @@ public class AthleteInput implements Choice {
 
             if (input.hasNextInt()) {
                 userInput = input.nextInt();
+                input.nextLine();
             } else {
                 input.next();
             }
