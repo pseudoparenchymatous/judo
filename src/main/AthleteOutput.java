@@ -84,6 +84,7 @@ public class AthleteOutput {
 
         if (athlete.getTrainingPlan() == TrainingPlan.BEGINNER) {
             System.out.println("\u001B[31m(Beginners cannot enter competitions)\u001B[0m");
+            return;
         }
 
         double fee = calculator.getCompetitionFee();
