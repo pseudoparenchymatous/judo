@@ -4,11 +4,11 @@ public class Athlete {
     private String name;
     private TrainingPlan trainingPlan;
     private double weight;
-    private String weightCategory;
+    private WeightCategory weightCategory;
     private int competitions;
     private int coachingHours;
 
-    public Athlete(String name, TrainingPlan trainingPlan, double weight, String weightCategory, int competitions, int coachingHours) {
+    public Athlete(String name, TrainingPlan trainingPlan, double weight, WeightCategory weightCategory, int competitions, int coachingHours) {
         this.name = name;
         this.trainingPlan = trainingPlan;
         this.weight = weight;
@@ -57,11 +57,11 @@ public class Athlete {
         this.coachingHours = coachingHours;
     }
 
-    public String getWeightCategory() {
+    public WeightCategory getWeightCategory() {
         return weightCategory;
     }
 
-    public void setWeightCategory(String weightCategory) {
+    public void setWeightCategory(WeightCategory weightCategory) {
         this.weightCategory = weightCategory;
     }
 }

@@ -13,7 +13,7 @@ public class AthleteInput implements Choice {
         String name = inputName();
         TrainingPlan trainingPlan = inputTrainingPlan();
         double weight = inputWeight();
-        String weightCategory = inputWeightCategory();
+        WeightCategory weightCategory = inputWeightCategory();
         int competitions = inputCompetitions(trainingPlan);
         int coachingHours = inputCoachingHours();
 
@@ -76,20 +76,13 @@ public class AthleteInput implements Choice {
         return weight;
     }
 
-    private String inputWeightCategory() {
-        String[] categories = {
-            "Flyweight",
-            "Lightweight",
-            "Light-Middleweight",
-            "Middleweight",
-            "Light-Heavyweight",
-            "Heavyweight"
-        };
+    private WeightCategory inputWeightCategory() {
+        String[] categories = WeightCategory.getCategories();
 
         System.out.println("Available weight categories");
         int userInput = getUserChoice(categories);
 
-        return categories[userInput-1];
+        return WeightCategory.values()[userInput-1];
     }
 
     private int inputCompetitions(TrainingPlan trainingPlan) {
