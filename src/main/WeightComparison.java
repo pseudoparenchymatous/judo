@@ -10,18 +10,18 @@ public class WeightComparison {
         this.weight = weight;
         this.category = category;
         this.limits = switch (category) {
-            case WeightCategory.FLYWEIGHT -> new int[] {0, 66};
+            case WeightCategory.FLYWEIGHT -> new int[] {40, 66};
             case WeightCategory.LIGHTWEIGHT -> new int[] {67, 73};
             case WeightCategory.LIGHTMIDDLEWEIGHT -> new int[] {74, 81};
             case WeightCategory.MIDDLEWEIGHT -> new int[] {82, 90};
             case WeightCategory.LIGHTHEAVYWEIGHT -> new int[] {91, 100};
-            case WeightCategory.HEAVYWEIGHT -> new int[] {101, 0};
+            case WeightCategory.HEAVYWEIGHT -> new int[] {101, 200};
         };
     }
 
     public String getLimit() {
         return switch (category) {
-            case WeightCategory.HEAVYWEIGHT -> "Unlimited";
+            case WeightCategory.HEAVYWEIGHT -> "Beyond 100kg";
             default -> String.format(limits[1] + " kg");
         };
     }
@@ -33,13 +33,13 @@ public class WeightComparison {
                 if (weight < limits[1]) {
                     result = "Within limit.";
                 } else {
-                    result = String.format("Exceeds limit by %.2f kg.", weight - limits[1]);
+                    result = String.format("Exceeds limit by %.2fkg.", weight - limits[1]);
                     suggestion = "Athlete needs to lose weight.";
                 }
                 break;
             case WeightCategory.HEAVYWEIGHT:
                 if (weight < limits[0]) {
-                    result = String.format("Below limit by %.2f kg.", limits[0] - weight);
+                    result = String.format("Below limit by %.2fkg.", limits[0] - weight);
                     suggestion = "Athlete needs to gain weight.";
                 } else {
                     result = "Within limit.";
@@ -47,10 +47,10 @@ public class WeightComparison {
                 break;
             default: 
                 if (weight < limits[0]) {
-                    result = String.format("Below limit by %.2f kg.", limits[0] - weight);
+                    result = String.format("Below limit by %.2fkg.", limits[0] - weight);
                     suggestion = "Athlete needs to lose weight.";
                 } else if (weight > limits[1]) {
-                    result = String.format("Exceeds limit by %.2f kg.", weight - limits[1]);
+                    result = String.format("Exceeds limit by %.2fkg.", weight - limits[1]);
                     suggestion = "Athlete needs to gain weight.";
                 } else {
                     result = "Within limit.";
