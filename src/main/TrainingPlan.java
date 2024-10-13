@@ -1,9 +1,24 @@
 package main;
 
 public enum TrainingPlan {
-    BEGINNER     (25.00),
-    INTERMEDIATE (30.00),
-    ELITE        (35.00);
+    BEGINNER     (25.00) {
+        @Override
+        public String toString() {
+            return "Beginner";
+        }
+    },
+    INTERMEDIATE (30.00) {
+        @Override
+        public String toString() {
+            return "Intermediate";
+        }
+    },
+    ELITE        (35.00) {
+        @Override
+        public String toString() {
+            return "Elite";
+        }
+    };
 
     private final double fee;
 
