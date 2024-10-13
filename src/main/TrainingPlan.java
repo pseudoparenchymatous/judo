@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 public enum TrainingPlan {
     BEGINNER     (25.00) {
         @Override
@@ -31,10 +33,8 @@ public enum TrainingPlan {
     }
 
     public static String[] getPlans() {
-        String[] plans = new String[TrainingPlan.values().length];
-        for (int i = 0; i < TrainingPlan.values().length; i++) {
-            plans[i] = TrainingPlan.values()[i].name();
-        }
-        return plans;
+        return Arrays.stream(TrainingPlan.values())
+                     .map(String::valueOf)
+                     .toArray(String[]::new);
     }
 }
