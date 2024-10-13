@@ -31,6 +31,7 @@ public class AthleteInput implements Choice {
             name = input.nextLine();
             System.out.print("\u001B[0m");
 
+            // Name is invalid if input contains non-letter characters
             for (char c: name.toCharArray()) {
                 if (!Character.isSpaceChar(c)) {
                     if (!Character.isLetter(c)) {
@@ -39,6 +40,7 @@ public class AthleteInput implements Choice {
                 }
             }
 
+            // Print message in red color
             if (invalidName) {
                 System.out.println("\u001B[31mName must only contain letters\u001B[0m");
             }
