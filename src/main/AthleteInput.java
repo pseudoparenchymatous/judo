@@ -73,7 +73,11 @@ public class AthleteInput implements Choice {
                 input.next();
             }
             System.out.print("\u001B[0m");
-        } while (weight < 1.0);
+
+            if (weight < 40 || weight > 200) {
+                System.out.println("\u001B[31mPlease enter weight within the limit.\u001B[0m");
+            }
+        } while (weight < 40 || weight > 200);
 
         return weight;
     }
