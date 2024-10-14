@@ -12,10 +12,10 @@ public class WeightComparison {
         this.limits = switch (category) {
             case WeightCategory.FLYWEIGHT -> new int[] {40, 66};
             case WeightCategory.LIGHTWEIGHT -> new int[] {67, 73};
-            case WeightCategory.LIGHTMIDDLEWEIGHT -> new int[] {74, 81};
+            case WeightCategory.LIGHT_MIDDLEWEIGHT -> new int[] {74, 81};
             case WeightCategory.MIDDLEWEIGHT -> new int[] {82, 90};
-            case WeightCategory.LIGHTHEAVYWEIGHT -> new int[] {91, 100};
-            case WeightCategory.HEAVYWEIGHT -> new int[] {101, 200};
+            case WeightCategory.LIGHT_HEAVYWEIGHT -> new int[] {91, 100};
+            case WeightCategory.HEAVYWEIGHT -> new int[] {101, 0};
         };
     }
 

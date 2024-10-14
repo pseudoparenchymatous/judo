@@ -13,7 +13,7 @@ public enum WeightCategory {
             return "Lightweight";
         }
     },
-    LIGHTMIDDLEWEIGHT {
+    LIGHT_MIDDLEWEIGHT {
         @Override
         public String toString() {
             return "Light-Middleweight";
@@ -25,7 +25,7 @@ public enum WeightCategory {
             return "Middleweight";
         }
     },
-    LIGHTHEAVYWEIGHT {
+    LIGHT_HEAVYWEIGHT {
         @Override
         public String toString() {
             return "Light-Heavyweight";
