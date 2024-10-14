@@ -10,7 +10,14 @@ public class Athlete {
 
     public Athlete() {}
 
-    public Athlete(String name, TrainingPlan trainingPlan, double weight, WeightCategory weightCategory, int competitions, int coachingHours) {
+    public Athlete(
+        String name,
+        TrainingPlan trainingPlan,
+        double weight,
+        WeightCategory weightCategory,
+        int competitions,
+        int coachingHours
+    ) {
         this.name = name;
         this.trainingPlan = trainingPlan;
         this.weight = weight;
