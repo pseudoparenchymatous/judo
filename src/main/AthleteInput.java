@@ -65,12 +65,12 @@ public class AthleteInput implements Choice {
     private double inputWeight() {
         double weight = 0.0;
         do {
-            System.out.print("Enter weight in kg: \u001B[32m");
+            System.out.print("Enter weight in kg (40-200): \u001B[32m");
             if (input.hasNextDouble()) {
                 weight = input.nextDouble();
                 input.nextLine();
             } else {
-                input.next();
+                input.nextLine();
             }
             System.out.print("\u001B[0m");
 
