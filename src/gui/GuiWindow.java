@@ -4,7 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GuiWindow {
+    private OptionWindow[] optionWindows;
+
     public GuiWindow(String[] messages, String[] options) {
+        optionWindows = new OptionWindow[]{
+            new RegisterAthleteWindow(),
+            new ViewAthletesWindow(),
+            new ExitWindow()
+        };
+
         JFrame frame = new JFrame("North Sussex Judo");
         JPanel framePanel = new JPanel();
         framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.Y_AXIS));
@@ -36,8 +44,10 @@ public class GuiWindow {
     private JPanel optionsPanel(String[] options) {
         JPanel panel = new JPanel();
 
-        for (String option: options) {
-            JButton button = new JButton(option);
+        for (int i = 0; i < options.length; i++) {
+            final int x = i;
+            JButton button = new JButton(options[i]);
+            button.addActionListener(_ -> optionWindows[x].spawnWindow());
             panel.add(button);
         }
 
