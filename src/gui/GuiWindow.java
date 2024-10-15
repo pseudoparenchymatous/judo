@@ -1,45 +1,46 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class GuiWindow {
-    private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
-    private final String[] choices = {"Register athlete", "Print costs", "Exit"};
-
-    private final JPanel buttonsPanel = new JPanel();
-    private final JPanel welcomePanel = new JPanel();
-
-    public GuiWindow() {
+    public GuiWindow(String[] messages, String[] options) {
         JFrame frame = new JFrame("North Sussex Judo");
         JPanel framePanel = new JPanel();
         framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.Y_AXIS));
         frame.add(framePanel);
 
-        welcomePanel.setLayout(new BoxLayout(welcomePanel, BoxLayout.Y_AXIS));
-        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
-        framePanel.add(welcomePanel);
-        framePanel.add(buttonsPanel);
+        framePanel.add(welcomePanel(messages));
+        framePanel.add(optionsPanel(options));
 
-        printWelcomeMessages();
-        addButtons();
-
-        frame.setBounds(100, 30, 320, 120);
+        frame.pack();
+        frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void printWelcomeMessages() {
-        for (String message: welcomeMessages) {
+    private JPanel welcomePanel(String[] messages) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        for (String message: messages) {
             JLabel label = new JLabel(message);
-            label.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-            welcomePanel.add(label);
+            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(label);
         }
+
+        return panel;
     }
 
-    private void addButtons() {
-        for (String choice: choices) {
-            JButton button = new JButton(choice);
-            buttonsPanel.add(button);
+    private JPanel optionsPanel(String[] options) {
+        JPanel panel = new JPanel();
+
+        for (String option: options) {
+            JButton button = new JButton(option);
+            panel.add(button);
         }
+
+        return panel;
     }
 }
