@@ -1,5 +1,5 @@
 {
-  description = "Hecking Java!!!! #BatChest";
+  description = "North Sussex Judo (NSJ): first project in BDSE";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
