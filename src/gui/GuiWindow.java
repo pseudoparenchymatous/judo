@@ -47,7 +47,7 @@ public class GuiWindow {
         for (int i = 0; i < options.length; i++) {
             final int x = i;
             JButton button = new JButton(options[i]);
-            button.addActionListener(_ -> optionWindows[x].spawnWindow());
+            button.addActionListener(e -> optionWindows[x].spawnWindow());
             panel.add(button);
         }
 
