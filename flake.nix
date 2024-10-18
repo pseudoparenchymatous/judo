@@ -11,6 +11,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
 
     javac = "${pkgs.jdk}/bin/javac";
+    jars = ./jars/flatlaf-3.5.1.jar;
   in {
     devShells.${system}.default = pkgs.mkShell {
       name = "java-devshell";
@@ -31,21 +32,21 @@
     packages.${system}.default = pkgs.stdenv.mkDerivation {
       pname = "nsj";
       version = "1.0";
-      src = ./src;
+      src = ./.;
 
       buildPhase = ''
-        rm -rf target
-        ${javac} -Xlint:none -d target -sourcepath . main/Main.java
+        rm -rf out
+        ${javac} -Xlint:none -d out -cp ${jars} -sourcepath $src/src src/main/Main.java
       '';
 
       installPhase = ''
-        mkdir -p $out/target
-        mv target $out/
+        mkdir -p $out/out
+        mv out $out/
 
         mkdir $out/bin
         cat > $out/bin/nsj << EOF
         #!${pkgs.bash}/bin/bash
-        ${pkgs.jdk}/bin/java -cp $out/target main.Main
+        ${pkgs.jdk}/bin/java -cp ${jars}:$out/out main.Main
         EOF
 
         chmod +x $out/bin/nsj
