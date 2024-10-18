@@ -1,5 +1,6 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import gui.GuiWindow;
 
 import javax.swing.*;
@@ -10,7 +11,10 @@ public class Menu implements Choice {
 
     public Menu(boolean spawnGui) {
         if (spawnGui) {
-            SwingUtilities.invokeLater(() -> new GuiWindow(welcomeMessages, choices));
+            SwingUtilities.invokeLater(() -> {
+                FlatLightLaf.setup();
+                new GuiWindow(welcomeMessages, choices);
+            });
         }
 
         AthleteInput athleteInput = new AthleteInput();
