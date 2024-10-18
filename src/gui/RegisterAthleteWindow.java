@@ -28,16 +28,37 @@ public class RegisterAthleteWindow implements OptionWindow {
 
     public RegisterAthleteWindow() {
         frame = new JFrame("Enter athlete details");
-        framePanel = new JPanel();
-        framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.Y_AXIS));
+        framePanel = new JPanel(new GridBagLayout());
 
-        framePanel.add(getNamePanel());
-        framePanel.add(getTrainingPlanPanel());
-        framePanel.add(getWeightPanel());
-        framePanel.add(getCategoryPanel());
-        framePanel.add(getCompetitionsPanel());
-        framePanel.add(getPrivateCoachingPanel());
-        framePanel.add(getButtonsPanel());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        framePanel.add(getNamePanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        framePanel.add(getTrainingPlanPanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        framePanel.add(getWeightPanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        framePanel.add(getCategoryPanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        framePanel.add(getCompetitionsPanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        framePanel.add(getPrivateCoachingPanel(), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 6;
+        framePanel.add(getButtonsPanel(), constraints);
 
         frame.add(framePanel);
     }
