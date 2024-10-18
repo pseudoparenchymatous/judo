@@ -79,7 +79,10 @@ public class RegisterAthleteWindow implements OptionWindow {
         JPanel panel = createFlowPanel();
 
         JLabel nameLabel = new JLabel("Name");
+        panel.add(nameLabel);
+
         nameField = new JTextField(10);
+        panel.add(nameField);
 
         nameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -100,9 +103,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         invalidNameLabel.setForeground(Color.RED);
         invalidNameLabel.setVisible(false);
 
-        panel.add(nameLabel);
-        panel.add(getInvisibleGap(5));
-        panel.add(nameField);
         panel.add(invalidNameLabel);
 
         return panel;
