@@ -2,13 +2,15 @@ package main;
 
 import gui.GuiWindow;
 
+import javax.swing.*;
+
 public class Menu implements Choice {
     private final String[] welcomeMessages = {"Welcome to North Sussex Judo", "What would you like to do?"};
     private final String[] choices = {"Register athlete", "Print costs", "Exit"};
 
     public Menu(boolean spawnGui) {
         if (spawnGui) {
-            new GuiWindow(welcomeMessages, choices);
+            SwingUtilities.invokeLater(() -> new GuiWindow(welcomeMessages, choices));
         }
 
         AthleteInput athleteInput = new AthleteInput();
