@@ -35,6 +35,7 @@ public class Menu implements Choice {
                     break;
                 default:
                     System.out.println("Exiting...");
+                    System.exit(0);
             }
         } while (userInput != 3);
     }
