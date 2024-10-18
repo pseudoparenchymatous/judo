@@ -198,7 +198,7 @@ public class RegisterAthleteWindow implements OptionWindow {
            }
         }
 
-        if (validName || name.isEmpty()) {
+        if (validName && !name.isEmpty()) {
             invalidNameLabel.setVisible(false);
             submitButton.setEnabled(true);
         } else {
