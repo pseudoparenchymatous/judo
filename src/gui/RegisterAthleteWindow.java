@@ -80,10 +80,6 @@ public class RegisterAthleteWindow implements OptionWindow {
 
         JLabel nameLabel = new JLabel("Name");
         nameField = new JTextField();
-        Dimension dimension = new Dimension(120, 20);
-        nameField.setPreferredSize(dimension);
-        nameField.setMinimumSize(dimension);
-        nameField.setMaximumSize(dimension);
 
         nameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
