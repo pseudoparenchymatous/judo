@@ -79,7 +79,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         JPanel panel = createFlowPanel();
 
         JLabel nameLabel = new JLabel("Name");
-        nameField = new JTextField();
+        nameField = new JTextField(10);
 
         nameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
