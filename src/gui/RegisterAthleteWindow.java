@@ -76,8 +76,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getNamePanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        JPanel panel = createFlowPanel();
 
         JLabel nameLabel = new JLabel("Name");
         nameField = new JTextField();
@@ -114,8 +113,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getTrainingPlanPanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Training plan");
         trainingPlanJComboBox = new JComboBox<>(TrainingPlan.values());
@@ -130,7 +128,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getWeightPanel() {
-        JPanel panel = new JPanel();
+        JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Weight");
 
@@ -145,8 +143,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getCategoryPanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Weight category");
          weightCategoryJComboBox = new JComboBox<>(WeightCategory.values());
@@ -159,8 +156,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getCompetitionsPanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Competitions");
 
@@ -181,8 +177,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getPrivateCoachingPanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Private coaching hours");
         SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, 5, 1);
@@ -210,6 +205,10 @@ public class RegisterAthleteWindow implements OptionWindow {
         panel.add(submitButton);
 
         return panel;
+    }
+
+    private JPanel createFlowPanel() {
+        return new JPanel(new FlowLayout(FlowLayout.LEFT));
     }
 
     private void checkName(JTextField field) {
