@@ -12,6 +12,8 @@ public class RegisterAthleteWindow implements OptionWindow {
     private JFrame frame;
     private JPanel framePanel;
 
+    private final GridBagConstraints constraints;
+
     private JLabel invalidNameLabel = new JLabel("Invalid value. Must only include letters");
 
     private JTextField nameField;
@@ -30,7 +32,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         frame = new JFrame("Enter athlete details");
         framePanel = new JPanel(new GridBagLayout());
 
-        GridBagConstraints constraints = new GridBagConstraints();
+        constraints = new GridBagConstraints();
 
         constraints.gridx = 0;
         constraints.gridy = 0;
