@@ -37,6 +37,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.insets = new Insets(5, 20, 5, 20);
         framePanel.add(getNamePanel(), constraints);
 
         constraints.gridx = 0;
