@@ -184,7 +184,6 @@ public class RegisterAthleteWindow implements OptionWindow {
 
     private JPanel getButtonsPanel() {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 
         JButton resetButton = new JButton("Reset");
         submitButton = new JButton("Submit");
