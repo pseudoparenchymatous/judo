@@ -140,7 +140,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         JPanel panel = createFlowPanel();
 
         JLabel label = new JLabel("Weight category");
-         weightCategoryJComboBox = new JComboBox<>(WeightCategory.values());
+        weightCategoryJComboBox = new JComboBox<>(WeightCategory.values());
 
         panel.add(label);
         panel.add(weightCategoryJComboBox);
