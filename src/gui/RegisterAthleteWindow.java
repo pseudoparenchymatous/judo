@@ -115,7 +115,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         trainingPlanJComboBox = new JComboBox<>(TrainingPlan.values());
 
         panel.add(label);
-        panel.add(getInvisibleGap(5));
         panel.add(trainingPlanJComboBox);
 
         trainingPlanJComboBox.addActionListener(e -> checkTrainingPlan());
@@ -132,7 +131,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         weightSpinner = new JSpinner(weightModel);
 
         panel.add(label);
-        panel.add(getInvisibleGap(5));
         panel.add(weightSpinner);
 
         return panel;
@@ -145,7 +143,6 @@ public class RegisterAthleteWindow implements OptionWindow {
          weightCategoryJComboBox = new JComboBox<>(WeightCategory.values());
 
         panel.add(label);
-        panel.add(getInvisibleGap(5));
         panel.add(weightCategoryJComboBox);
 
         return panel;
@@ -180,7 +177,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         privateCoachingSpinner = new JSpinner(spinnerModel);
 
         panel.add(label);
-        panel.add(getInvisibleGap(5));
         panel.add(privateCoachingSpinner);
 
         return panel;
@@ -243,9 +239,5 @@ public class RegisterAthleteWindow implements OptionWindow {
         weightSpinner.setValue(40.00);
         weightCategoryJComboBox.setSelectedIndex(0);
         privateCoachingSpinner.setValue(0);
-    }
-
-    private Component getInvisibleGap(int gap) {
-        return Box.createHorizontalStrut(gap);
     }
 }
