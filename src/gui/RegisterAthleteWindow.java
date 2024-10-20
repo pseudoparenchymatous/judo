@@ -11,7 +11,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 
 public class RegisterAthleteWindow implements OptionWindow {
-    private JFrame frame;
+    private final JFrame frame;
     private JPanel framePanel;
 
     private final GridBagConstraints constraints;
