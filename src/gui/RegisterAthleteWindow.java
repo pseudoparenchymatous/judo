@@ -14,8 +14,6 @@ public class RegisterAthleteWindow implements OptionWindow {
 
     private final GridBagConstraints constraints;
 
-    private JLabel invalidNameLabel = new JLabel("Invalid value. Must only include letters");
-
     private JTextField nameField;
     private JComboBox<TrainingPlan> trainingPlanJComboBox;
     private JSpinner weightSpinner;
@@ -99,11 +97,6 @@ public class RegisterAthleteWindow implements OptionWindow {
             public void changedUpdate(DocumentEvent e) {
             }
         });
-
-        invalidNameLabel.setForeground(Color.RED);
-        invalidNameLabel.setVisible(false);
-
-        panel.add(invalidNameLabel);
 
         return panel;
     }
@@ -214,10 +207,8 @@ public class RegisterAthleteWindow implements OptionWindow {
         }
 
         if (validName && !name.isEmpty()) {
-            invalidNameLabel.setVisible(false);
             submitButton.setEnabled(true);
         } else {
-            invalidNameLabel.setVisible(true);
             submitButton.setEnabled(false);
         }
 
