@@ -15,6 +15,7 @@ public class AthleteOutput {
             return;
         }
 
+        System.out.println();
         printDash(28);
         System.out.println("\tMonthly cost");
         printDash(28);
@@ -33,6 +34,7 @@ public class AthleteOutput {
         endGreenText();
 
         printComparison();
+        System.out.println();
         System.out.println();
     }
 
