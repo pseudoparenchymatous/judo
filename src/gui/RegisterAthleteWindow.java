@@ -1,14 +1,14 @@
 package gui;
 
-import main.Athlete;
-import main.AthleteList;
-import main.TrainingPlan;
-import main.WeightCategory;
+import main.*;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 
 public class RegisterAthleteWindow implements OptionWindow {
     private final JFrame frame;
@@ -183,14 +183,18 @@ public class RegisterAthleteWindow implements OptionWindow {
     private JPanel getButtonsPanel() {
         JPanel panel = new JPanel();
 
+        JButton infoButton = new JButton("Info");
+
         JButton resetButton = new JButton("Reset");
         submitButton = new JButton("Submit");
 
         submitButton.setEnabled(false);
 
+        infoButton.addActionListener(e -> spawnInfoDialog());
         resetButton.addActionListener(e -> resetForm());
         submitButton.addActionListener(e -> submitForm());
 
+        panel.add(infoButton);
         panel.add(resetButton);
         panel.add(submitButton);
 
@@ -225,6 +229,20 @@ public class RegisterAthleteWindow implements OptionWindow {
         }
     }
 
+    private void spawnInfoDialog() {
+        JDialog dialog = new JDialog(frame, "Info");
+
+        JPanel panel = new JPanel();
+        dialog.add(panel);
+
+        JLabel beginnerCompetitionInfo = new JLabel("Beginners cannot enter competitions");
+        panel.add(beginnerCompetitionInfo);
+
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }
+
     private void resetForm() {
         nameField.setText("");
         trainingPlanJComboBox.setSelectedIndex(0);
@@ -241,16 +259,16 @@ public class RegisterAthleteWindow implements OptionWindow {
         int competitions = oneCompetitionRadioButton.isSelected()? 1 : 0;
         int coachingHours = (int) privateCoachingSpinner.getValue();
 
-        AthleteList.getList().addAthlete(
-                new Athlete(
-                        name,
-                        trainingPlan,
-                        weight,
-                        category,
-                        competitions,
-                        coachingHours
-                )
+        Athlete athlete = new Athlete(
+                name,
+                trainingPlan,
+                weight,
+                category,
+                competitions,
+                coachingHours
         );
+
+        AthleteList.getList().addAthlete(athlete);
 
         frame.setVisible(false);
         resetForm();
