@@ -76,13 +76,13 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getNamePanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel nameLabel = new JLabel("Name");
-        panel.add(nameLabel);
+        panel.add(nameLabel, BorderLayout.WEST);
 
         nameField = new JTextField(10);
-        panel.add(nameField);
+        panel.add(nameField, BorderLayout.EAST);
 
         nameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -104,13 +104,13 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getTrainingPlanPanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel label = new JLabel("Training plan");
         trainingPlanJComboBox = new JComboBox<>(TrainingPlan.values());
 
-        panel.add(label);
-        panel.add(trainingPlanJComboBox);
+        panel.add(label, BorderLayout.WEST);
+        panel.add(trainingPlanJComboBox, BorderLayout.EAST);
 
         trainingPlanJComboBox.addActionListener(e -> checkTrainingPlan());
 
@@ -118,33 +118,33 @@ public class RegisterAthleteWindow implements OptionWindow {
     }
 
     private JPanel getWeightPanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel label = new JLabel("Weight");
 
         SpinnerNumberModel weightModel = new SpinnerNumberModel(40.00, 40.00, 200.00, 0.1);
         weightSpinner = new JSpinner(weightModel);
 
-        panel.add(label);
-        panel.add(weightSpinner);
+        panel.add(label, BorderLayout.WEST);
+        panel.add(weightSpinner, BorderLayout.EAST);
 
         return panel;
     }
 
     private JPanel getCategoryPanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel label = new JLabel("Weight category");
         weightCategoryJComboBox = new JComboBox<>(WeightCategory.values());
 
-        panel.add(label);
-        panel.add(weightCategoryJComboBox);
+        panel.add(label, BorderLayout.WEST);
+        panel.add(weightCategoryJComboBox, BorderLayout.EAST);
 
         return panel;
     }
 
     private JPanel getCompetitionsPanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel label = new JLabel("Competitions");
 
@@ -157,22 +157,25 @@ public class RegisterAthleteWindow implements OptionWindow {
         zeroCompetitionRadioButton.setSelected(true);
         oneCompetitionRadioButton.setEnabled(false);
 
-        panel.add(label);
-        panel.add(zeroCompetitionRadioButton);
-        panel.add(oneCompetitionRadioButton);
+        panel.add(label, BorderLayout.WEST);
+
+        JPanel radioPanel = new JPanel();
+        radioPanel.add(zeroCompetitionRadioButton);
+        radioPanel.add(oneCompetitionRadioButton);
+        panel.add(radioPanel, BorderLayout.EAST);
 
         return panel;
     }
 
     private JPanel getPrivateCoachingPanel() {
-        JPanel panel = createFlowPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
         JLabel label = new JLabel("Private coaching hours");
         SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, 5, 1);
         privateCoachingSpinner = new JSpinner(spinnerModel);
 
-        panel.add(label);
-        panel.add(privateCoachingSpinner);
+        panel.add(label, BorderLayout.WEST);
+        panel.add(privateCoachingSpinner, BorderLayout.EAST);
 
         return panel;
     }
@@ -192,10 +195,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         panel.add(submitButton);
 
         return panel;
-    }
-
-    private JPanel createFlowPanel() {
-        return new JPanel(new FlowLayout(FlowLayout.LEFT));
     }
 
     private void checkName(JTextField field) {
