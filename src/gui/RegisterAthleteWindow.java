@@ -1,5 +1,7 @@
 package gui;
 
+import main.Athlete;
+import main.AthleteList;
 import main.TrainingPlan;
 import main.WeightCategory;
 
@@ -184,6 +186,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         submitButton.setEnabled(false);
 
         resetButton.addActionListener(e -> resetForm());
+        submitButton.addActionListener(e -> submitForm());
 
         panel.add(resetButton);
         panel.add(submitButton);
@@ -230,4 +233,28 @@ public class RegisterAthleteWindow implements OptionWindow {
         weightCategoryJComboBox.setSelectedIndex(0);
         privateCoachingSpinner.setValue(0);
     }
+
+    private void submitForm() {
+        String name = nameField.getText();
+        TrainingPlan trainingPlan = (TrainingPlan) trainingPlanJComboBox.getSelectedItem();
+        double weight = (double) weightSpinner.getValue();
+        WeightCategory category = (WeightCategory) weightCategoryJComboBox.getSelectedItem();
+        int competitions = oneCompetitionRadioButton.isSelected()? 1 : 0;
+        int coachingHours = (int) privateCoachingSpinner.getValue();
+
+        AthleteList.getList().addAthlete(
+                new Athlete(
+                        name,
+                        trainingPlan,
+                        weight,
+                        category,
+                        competitions,
+                        coachingHours
+                )
+        );
+
+        frame.setVisible(false);
+        resetForm();
+    }
+
 }
