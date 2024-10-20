@@ -17,11 +17,11 @@ public class RegisterAthleteWindow implements OptionWindow {
     private JLabel invalidNameLabel = new JLabel("Invalid value. Must only include letters");
 
     private JTextField nameField;
+    private JComboBox<TrainingPlan> trainingPlanJComboBox;
     private JSpinner weightSpinner;
     private JComboBox<WeightCategory> weightCategoryJComboBox;
     private JSpinner privateCoachingSpinner;
 
-    private JComboBox<TrainingPlan> trainingPlanJComboBox;
     private JRadioButton oneCompetitionRadioButton;
     private JRadioButton zeroCompetitionRadioButton;
     private ButtonGroup competitionsButtonGroup;
