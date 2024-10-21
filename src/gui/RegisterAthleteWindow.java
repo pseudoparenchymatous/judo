@@ -1,9 +1,7 @@
 package gui;
 
-import main.Athlete;
-import main.AthleteList;
-import main.TrainingPlan;
-import main.WeightCategory;
+import database.Database;
+import main.*;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -27,6 +25,7 @@ public class RegisterAthleteWindow implements OptionWindow {
     private ButtonGroup competitionsButtonGroup;
 
     private JButton submitButton;
+    private final Database db;
 
     public RegisterAthleteWindow() {
         frame = new JFrame("Enter athlete details");
@@ -65,6 +64,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         framePanel.add(getButtonsPanel(), constraints);
 
         frame.add(framePanel);
+        db = new Database("jdbc:h2:tcp://localhost/~/Lithan/test", "geo", "123");
     }
 
     @Override
@@ -259,16 +259,18 @@ public class RegisterAthleteWindow implements OptionWindow {
         int competitions = oneCompetitionRadioButton.isSelected()? 1 : 0;
         int coachingHours = (int) privateCoachingSpinner.getValue();
 
-        AthleteList.getList().addAthlete(
-                new Athlete(
-                        name,
-                        trainingPlan,
-                        weight,
-                        category,
-                        competitions,
-                        coachingHours
-                )
+        Athlete athlete = new Athlete(
+            name,
+            trainingPlan,
+            weight,
+            category,
+            competitions,
+            coachingHours
         );
+
+        db.addAthlete(athlete);
+
+        AthleteList.getList().addAthlete(athlete);
 
         frame.setVisible(false);
         resetForm();
