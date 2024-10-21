@@ -183,14 +183,18 @@ public class RegisterAthleteWindow implements OptionWindow {
     private JPanel getButtonsPanel() {
         JPanel panel = new JPanel();
 
+        JButton infoButton = new JButton("Info");
+
         JButton resetButton = new JButton("Reset");
         submitButton = new JButton("Submit");
 
         submitButton.setEnabled(false);
 
+        infoButton.addActionListener(e -> spawnInfoDialog());
         resetButton.addActionListener(e -> resetForm());
         submitButton.addActionListener(e -> submitForm());
 
+        panel.add(infoButton);
         panel.add(resetButton);
         panel.add(submitButton);
 
@@ -223,6 +227,20 @@ public class RegisterAthleteWindow implements OptionWindow {
         } else {
             oneCompetitionRadioButton.setEnabled(true);
         }
+    }
+
+    private void spawnInfoDialog() {
+        JDialog dialog = new JDialog(frame, "Info");
+
+        JPanel panel = new JPanel();
+        dialog.add(panel);
+
+        JLabel beginnerCompetitionInfo = new JLabel("Beginners cannot enter competitions");
+        panel.add(beginnerCompetitionInfo);
+
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }
 
     private void resetForm() {
