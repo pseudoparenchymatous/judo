@@ -65,6 +65,8 @@ public class AthleteInput implements Choice {
     private double inputWeight() {
         double weight = 0.0;
         do {
+            // Print user input in green color using ANSI codes.
+            // This will help distinguish between prompt message and actual input
             System.out.print("Enter weight in kg (40-200): \u001B[32m");
             if (input.hasNextDouble()) {
                 weight = input.nextDouble();
@@ -75,6 +77,7 @@ public class AthleteInput implements Choice {
             System.out.print("\u001B[0m");
 
             if (weight < 40 || weight > 200) {
+                // Print error message in red color using ANSI codes
                 System.out.println("\u001B[31mPlease enter weight within the limit.\u001B[0m");
             }
         } while (weight < 40 || weight > 200);
