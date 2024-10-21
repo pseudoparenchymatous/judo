@@ -26,12 +26,15 @@ public class Menu implements Choice {
             userInput = getUserChoice(choices);
             switch (userInput) {
                 case 1:
-                    AthleteList.getList().addAthlete(athleteInput.inputAthlete());
+                    Athlete inputAthlete = athleteInput.inputAthlete();
+                    AthleteList.getList().addAthlete(inputAthlete);
+                    AthleteOutput outputAfterInput = new AthleteOutput(inputAthlete);
+                    outputAfterInput.printOutput();
                     break;
                 case 2:
-                    Athlete athlete = AthleteList.getList().getAthleteByName(athleteInput.inputName());
-                    AthleteOutput athleteOutput = new AthleteOutput(athlete);
-                    athleteOutput.printOutput();
+                    Athlete athleteFromName = AthleteList.getList().getAthleteByName(athleteInput.inputName());
+                    AthleteOutput outputFromName = new AthleteOutput(athleteFromName);
+                    outputFromName.printOutput();
                     break;
                 default:
                     System.out.println("Exiting...");
