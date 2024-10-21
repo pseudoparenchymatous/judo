@@ -11,6 +11,7 @@ public class Menu implements Choice {
 
     public Menu(boolean spawnGui) {
         if (spawnGui) {
+            // IMPORTANT! This runs the GUI on the Event Dispatch Thread to ensure consistent GUI updates
             SwingUtilities.invokeLater(() -> {
                 FlatLightLaf.setup();
                 new GuiWindow(welcomeMessages, choices);
