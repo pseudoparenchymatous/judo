@@ -236,6 +236,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         JLabel beginnerCompetitionInfo = new JLabel("Beginners cannot enter competitions");
         panel.add(beginnerCompetitionInfo);
 
+        dialog.setResizable(false);
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
