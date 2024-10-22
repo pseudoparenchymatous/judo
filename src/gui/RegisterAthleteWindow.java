@@ -25,7 +25,6 @@ public class RegisterAthleteWindow implements OptionWindow {
     private ButtonGroup competitionsButtonGroup;
 
     private JButton submitButton;
-    private final Database db;
 
     public RegisterAthleteWindow() {
         frame = new JFrame("Enter athlete details");
@@ -64,7 +63,6 @@ public class RegisterAthleteWindow implements OptionWindow {
         framePanel.add(getButtonsPanel(), constraints);
 
         frame.add(framePanel);
-        db = new Database("jdbc:h2:tcp://localhost/~/Lithan/test", "geo", "123");
     }
 
     @Override
@@ -268,8 +266,7 @@ public class RegisterAthleteWindow implements OptionWindow {
             coachingHours
         );
 
-        db.addAthlete(athlete);
-
+        Database.getDatabase().addAthlete(athlete);
         AthleteList.getList().addAthlete(athlete);
 
         frame.setVisible(false);

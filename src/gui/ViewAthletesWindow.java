@@ -1,5 +1,6 @@
 package gui;
 
+import database.Database;
 import main.Athlete;
 import main.AthleteFeeCalculator;
 import main.AthleteList;
@@ -23,8 +24,6 @@ public class ViewAthletesWindow implements OptionWindow {
     private JLabel competitionFeeBreakdown;
     private JLabel competitionFee;
     private JLabel totalCost;
-
-    private Athlete athlete;
 
     public ViewAthletesWindow() {
         athleteSelection = new JComboBox<>(AthleteList.getList().getNames());
@@ -166,7 +165,7 @@ public class ViewAthletesWindow implements OptionWindow {
         Object selection = athleteSelection.getSelectedItem();
         String athleteName = selection == null? "": selection.toString();
 
-        athlete = AthleteList.getList().getAthleteByName(athleteName);
+        Athlete athlete = Database.getDatabase().getAthleteByName(athleteName);
         AthleteFeeCalculator calculator = new AthleteFeeCalculator(athlete);
 
         nameLabel.setText(athlete.getName());
@@ -191,7 +190,7 @@ public class ViewAthletesWindow implements OptionWindow {
 
     private void updateList() {
         athleteSelection.removeAllItems();
-        for (String name : AthleteList.getList().getNames()) {
+        for (String name : Database.getDatabase().getNames()) {
             athleteSelection.addItem(name);
         }
     }
