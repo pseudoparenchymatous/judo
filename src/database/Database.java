@@ -50,7 +50,7 @@ public class Database {
         try (
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement sqlStatement = connection.createStatement();
-            ResultSet namesResult = sqlStatement.executeQuery("SELECT name FROM athletes");
+            ResultSet namesResult = sqlStatement.executeQuery("SELECT name FROM athletes")
         ) {
             ArrayList<String> namesList = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class Database {
         try (
                 Connection connection = DriverManager.getConnection(url, username, password);
                 Statement sqlStatement = connection.createStatement();
-                ResultSet athleteResult = sqlStatement.executeQuery(query);
+                ResultSet athleteResult = sqlStatement.executeQuery(query)
         ) {
             if (athleteResult.next()) {
                 String name = athleteResult.getString("name");
