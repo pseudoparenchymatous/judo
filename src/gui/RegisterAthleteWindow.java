@@ -1,6 +1,5 @@
 package gui;
 
-import database.Database;
 import main.*;
 
 import javax.swing.*;
@@ -10,9 +9,6 @@ import java.awt.*;
 
 public class RegisterAthleteWindow implements OptionWindow {
     private final JFrame frame;
-    private JPanel framePanel;
-
-    private final GridBagConstraints constraints;
 
     private JTextField nameField;
     private JComboBox<TrainingPlan> trainingPlanJComboBox;
@@ -22,15 +18,14 @@ public class RegisterAthleteWindow implements OptionWindow {
 
     private JRadioButton oneCompetitionRadioButton;
     private JRadioButton zeroCompetitionRadioButton;
-    private ButtonGroup competitionsButtonGroup;
 
     private JButton submitButton;
 
     public RegisterAthleteWindow() {
         frame = new JFrame("Enter athlete details");
-        framePanel = new JPanel(new GridBagLayout());
+        JPanel framePanel = new JPanel(new GridBagLayout());
 
-        constraints = new GridBagConstraints();
+        GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -110,7 +105,7 @@ public class RegisterAthleteWindow implements OptionWindow {
         panel.add(label, BorderLayout.WEST);
         panel.add(trainingPlanJComboBox, BorderLayout.EAST);
 
-        trainingPlanJComboBox.addActionListener(e -> checkTrainingPlan());
+        trainingPlanJComboBox.addActionListener(_ -> checkTrainingPlan());
 
         return panel;
     }
@@ -146,7 +141,7 @@ public class RegisterAthleteWindow implements OptionWindow {
 
         JLabel label = new JLabel("Competitions");
 
-        competitionsButtonGroup = new ButtonGroup();
+        ButtonGroup competitionsButtonGroup = new ButtonGroup();
         zeroCompetitionRadioButton = new JRadioButton("0");
         oneCompetitionRadioButton = new JRadioButton("1");
         competitionsButtonGroup.add(zeroCompetitionRadioButton);
@@ -188,9 +183,9 @@ public class RegisterAthleteWindow implements OptionWindow {
 
         submitButton.setEnabled(false);
 
-        infoButton.addActionListener(e -> spawnInfoDialog());
-        resetButton.addActionListener(e -> resetForm());
-        submitButton.addActionListener(e -> submitForm());
+        infoButton.addActionListener(_ -> spawnInfoDialog());
+        resetButton.addActionListener(_ -> resetForm());
+        submitButton.addActionListener(_ -> submitForm());
 
         panel.add(infoButton);
         panel.add(resetButton);
@@ -265,7 +260,6 @@ public class RegisterAthleteWindow implements OptionWindow {
 
         new MonthlyCostsWindow(athlete);
 
-        Database.getDatabase().addAthlete(athlete);
         AthleteList.getList().addAthlete(athlete);
 
         frame.setVisible(false);
