@@ -99,10 +99,9 @@ public class AthleteOutput {
         double weight = athlete.getWeight();
         WeightCategory category = athlete.getWeightCategory();
         WeightComparison comparison = new WeightComparison(category, weight);
-        String limit = comparison.getLimit();
 
         System.out.print("Weight comparison: ");
-        System.out.printf("%.2f kg (current) vs %s (%s limit)\n", weight, limit, category);
+        System.out.printf("%.2f kg (current) vs %d-%d kg (%s limit)\n", weight, category.getLowerLimit(), category.getUpperLimit(), category);
         System.out.printf("\t %s %s", comparison.getResult(), comparison.getSuggestion());
     }
 
