@@ -263,6 +263,8 @@ public class RegisterAthleteWindow implements OptionWindow {
             coachingHours
         );
 
+        new MonthlyCostsWindow(athlete);
+
         Database.getDatabase().addAthlete(athlete);
         AthleteList.getList().addAthlete(athlete);
 
