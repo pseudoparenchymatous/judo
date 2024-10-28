@@ -2,6 +2,8 @@ package gui;
 
 import main.Athlete;
 import main.AthleteFeeCalculator;
+import main.WeightCategory;
+import main.WeightComparison;
 
 import javax.swing.*;
 import java.awt.*;
@@ -101,6 +103,38 @@ public class MonthlyCostsWindow {
         gridBagConstraints.anchor = GridBagConstraints.WEST;
         JLabel totalCost = new JLabel(String.format("$%.2f", calculator.getTotalMonthlyFee()));
         costsPanel.add(totalCost, gridBagConstraints);
+
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy++;
+        gridBagConstraints.anchor = GridBagConstraints.EAST;
+        JLabel weightComparisonLabel = new JLabel("Weight Comparison");
+        costsPanel.add(weightComparisonLabel, gridBagConstraints);
+
+        gridBagConstraints.gridx++;
+        gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER;
+        WeightCategory category = athlete.getWeightCategory();
+        JLabel versusInfo = new JLabel(
+            String.format("%.2f kg (current) vs %d-%d kg (%s limit)",
+                athlete.getWeight(),
+                category.getLowerLimit(),
+                category.getUpperLimit(), category)
+        );
+        costsPanel.add(versusInfo, gridBagConstraints);
+
+        WeightComparison weightComparison = new WeightComparison(category, athlete.getWeight());
+
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy++;
+        gridBagConstraints.anchor = GridBagConstraints.EAST;
+        gridBagConstraints.gridwidth = 1;
+        JLabel comparisonResult = new JLabel(weightComparison.getResult());
+        costsPanel.add(comparisonResult, gridBagConstraints);
+
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
+        gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER;
+        JLabel comparisonSuggestion = new JLabel(weightComparison.getSuggestion());
+        costsPanel.add(comparisonSuggestion, gridBagConstraints);
 
         JButton closeButton = new JButton("Close");
         framePanel.add(closeButton, BorderLayout.SOUTH);
